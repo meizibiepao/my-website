@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="Idle Fantasy-PlayToEarn & Nft,NFT,Strategy,Idle,Card,Crypto,Blockchain,Challenges,Earn,Axie,CryptoKitties,Sandbox,DeFi,Gods,Mir">
+    <meta name="description" content="《Idle Fantasy-PlayToEarn & Nft》: Every Challenge is an Opportunity for Wealth and Adventure in NFT! Download Now!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+    <title>《Idle Fantasy-PlayToEarn & Nft》-Every Challenge is an Opportunity for Wealth and Adventure in NFT</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    
+</head>
+
+<body>
+    <div id="header"></div> 
+    
+    <div id='bgDiv' class="bg">
+        <div class="container">
+            <div class="img-box">
+                <div style="visibility:hidden;"><img class="holderImg" src="images/holder.png" alt="Idle Fantasy-PlayToEarn & Nft"></div>
+                <div id="toastList">
+                    game will coming soon。
+                </div>
+                <div class="clearfix btn-box">
+                    <div class="col-xs-6" onclick="clickIosOrDown()"><img src="images/an-meb.png" alt="Android《Idle Fantasy-PlayToEarn & Nft》"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="back-c"></div>
+    <div id="bottom"></div>
+    
+    
+    <script src='js/elvactrl.js'></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const files = [
+                { id: 'header', path: 'partials/header.html' },
+                { id: 'back-c', path: 'partials/back-c.html' },
+                { id: 'bottom', path: 'partials/bottom.html' }
+            ];
+
+            files.forEach(file => {
+                fetch(file.path)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(file.id).innerHTML = data;
+
+                        // 确保加载并执行每个文件中的脚本
+                        const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                        scriptTags.forEach(scriptTag => {
+                            const newScriptTag = document.createElement('script');
+                            newScriptTag.textContent = scriptTag.textContent;
+                            document.body.appendChild(newScriptTag);
+                        });
+                        
+                    })
+                    .catch(error => console.error(`Error loading ${file.path}:`, error));
+            });
+        });        
+    </script>
+
+    <script>
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 0,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 0,
+            autoplay: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            thumbs: {
+                swiper: galleryThumbs
+            }
+        });
+        var galleryThumbsImg = new Swiper('.animalImg', {
+            autoplay: true,
+            navigation:{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        });
+    </script>
+</html>

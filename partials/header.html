@@ -1,0 +1,109 @@
+<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script src="js/script.js"></script>
+
+<div class="header">
+    <div class='title-bar'>
+        <div class="des-btn-bar">
+            <div class="des-btn">
+                <div class="icon-btn">
+                    <img src='images/icon.png'></div>
+                </div>
+                <button class="dropdown-button" onclick="window.location.href='index.html'" onmouseenter="showDropdown('Home')" onmouseleave="hideDropdown('Home')">Home</button>
+                <div id="Home" class="dropdown-content" onmouseenter="showDropdown('Home')" onmouseleave="hideDropdown('Home')"></div>
+                
+            </div>
+
+            <div class="des-btn">
+                <button class="dropdown-button" onclick="toggleDropdown('About')" onmouseenter="showDropdown('About')" onmouseleave="hideDropdown('About')">About ∨</button>
+                <div id="About" class="dropdown-content" onmouseenter="showDropdown('About')" onmouseleave="hideDropdown('About')">
+                    <!--项目介绍-->
+                    <a href="ProjectIntroduction.html">Project Introduction</a>
+                    <!--团队信息-->
+                    <!-- <a href="Team.html">Team</a> -->
+                    <!--白皮书-->
+                    <a href="WhitePaper.html">WhitePaper</a>
+                </div>
+            </div>
+
+            <div class="des-btn">
+                <button class="dropdown-button" onclick="toggleDropdown('MarketPlace')" onmouseenter="showDropdown('MarketPlace')" onmouseleave="hideDropdown('MarketPlace')">MarketPlace ∨</button>
+                <div id="MarketPlace" class="dropdown-content" onmouseenter="showDropdown('MarketPlace')" onmouseleave="hideDropdown('MarketPlace')">
+                    <!--市场概览-->
+                    <a href="MarketOverview.html">Market Overview</a>
+                    <!--交易指南-->
+                    <a href="TransactionGuidelines.html">Transaction Guidelines</a>
+                </div>
+            </div>
+
+            <div class="des-btn">
+                <button class="dropdown-button" onclick="toggleDropdown('CECCOIN')" onmouseenter="showDropdown('CECCOIN')" onmouseleave="hideDropdown('CECCOIN')">CEC COIN ∨</button>
+                <div id="CECCOIN" class="dropdown-content" onmouseenter="showDropdown('CECCOIN')" onmouseleave="hideDropdown('CECCOIN')">
+                    <!--代币概述-->
+                    <a href="TokenOverview.html">Token Overview</a>
+                    <!--经济模型-->
+                    <a href="EconomicModel.html">Economic Model</a>
+                    <!--市场行情-->
+                    <a href="MarketConditions.html">Market Conditions</a>
+                    <!--质押指南-->
+                    <a href="Staking.html">Staking</a>
+                    <!--代币空投-->
+                    <a href="AirDrop.html">AirDrop</a>
+                </div>
+            </div>
+
+            <div class="des-btn">
+                <button class="dropdown-button" onclick="toggleDropdown('Support')" onmouseenter="showDropdown('Support')" onmouseleave="hideDropdown('Support')">Support ∨</button>
+                <div id="Support" class="dropdown-content" onmouseenter="showDropdown('Support')" onmouseleave="hideDropdown('Support')">
+                    <!--常见问题-->
+                    <a href="FAQ.html">FAQ</a>
+                    <!--测试-->
+                    <a href="Testing.html">Testing</a>
+                    <!--联系方式-->
+                    <!-- <a href="Contact.html">Contact</a> -->
+                </div>
+            </div>
+
+            <div class="des-btn">
+                <div class="icon-wallet">
+                    <img src='images/button3/MetaMask_Icon.png'></div>
+                </div>
+                <button class="dropdown-button" id="connectWalletBtn" onclick="handleWalletButtonClick()" onmouseenter="handleWalletButtonMouseEnter()" onmouseleave="hideDropdown('ConnectWallet')">Connect Wallet</button>
+                <div id="ConnectWallet" class="dropdown-content" onmouseenter="showDropdown('ConnectWallet')" onmouseleave="hideDropdown('ConnectWallet')"></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+    <div id="confirmLogout" class="modalx">
+        <div class="confirmLogout-content">
+            <p>logout Wallet Account?</p>
+            <div class="button-container">
+                <button onclick="logout()">logout</button>
+                <button onclick="closeLogoutModal()">cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="floatingText" class="floating-text"></div>
+
+<!-- <div id="modalBackdrop" class="modal-backdrop"></div>
+<div id="confirmLogout" class="modal">
+    <p>是否退出钱包地址?</p>
+    <div class="button-container">
+        <button onclick="logout()">确定</button>
+        <button onclick="closeLogoutModal()">取消</button>
+    </div>
+</div> -->
+
+<script>
+    // 确保 updateWalletButton 在加载 header.html 后调用
+    if (typeof updateWalletButton === 'function') {
+        updateWalletButton();
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            updateWalletButton();
+        });
+    }
+</script>

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="Idle Fantasy-PlayToEarn & Nft,NFT,Strategy,Idle,Card,Crypto,Blockchain,Challenges,Earn,Axie,CryptoKitties,Sandbox,DeFi,Gods,Mir">
+    <meta name="description" content="《Idle Fantasy-PlayToEarn & Nft》: Every Challenge is an Opportunity for Wealth and Adventure in NFT! Download Now!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+    <title>《Idle Fantasy-PlayToEarn & Nft》-Every Challenge is an Opportunity for Wealth and Adventure in NFT</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .title-icon-bar{ 
+            position: absolute;
+            left: 0;
+            top: 92px; /* Aligns directly below the header */
+            right: 0;
+            height: 150px; /* Example height */
+            z-index: 9; /* Lower than the header */
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px; /* Example padding */
+
+         }
+        .title-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .title-icon-img {
+            height: 100%;
+        }        
+        
+        .bg{ 
+            position: absolute;
+            padding-top: 250px; 
+            height: 100vh;
+        }
+        .container{ 
+            width:90%;
+            height: calc(100% - 20px);
+            padding-bottom: 10px; 
+            overflow-y: auto; /* 启用垂直滚动 */
+            box-sizing: border-box; /* 确保内边距包含在高度内 */
+            color: white;
+            font-size: 18px;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 62px; /* 设置滚动条的宽度 */
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: none;
+            background: url('images/button3/meb-kj-1.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+            position: relative;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: url('images/button3/meb-line-1.png') no-repeat center center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="header"></div> 
+    <div class="title-icon-bar">
+        <div class='title-icon'><img src='images/button3/meb-top.png' /></div>
+    </div>
+
+    <div id='bgDiv' class="bg">
+        <div class="container">
+            <p>CatEarCoin Policy</br>
+                Overview</br>
+                CatEarCoin is a virtual currency designed for our 3D metaverse card mobile game. It plays a role not only within the game but can also be traded in the external market. Our team is committed to creating an open metaverse world and a continuously growing token ecosystem. Our goal is to make CatEarCoin easily accessible and enjoyable for more players while ensuring its long-term value enhancement.</br>
+                Game Introduction</br>
+                Game Type: 3D Real-time Battle Card Game</br>
+                Theme: Fantasy, Adventure</br>
+                Game Modes: Single-player Campaign, Multiplayer Online Competition</br>
+                Features: Open free world, unique card system, combining real-time combat and strategic planning</br>
+                Allocation</br>
+                Allocation  Quantity    Percentage  Description</br>
+                Game Economy    455,000,000 91% Provided based on the game logic.</br>
+                Marketing   15,000,000  3%  Used for marketing activities (e.g., airdrop events).</br>
+                Platform Operation  5,000,000   1%  To maintain stable connection with WEMIX.</br>
+                Team    25,000,000  5%  As a reward for the development team.</br>
+                Total   500,000,000 100%    </br>
+                CatEarCoin Issuance and Usage Plan</br>
+                Total Issuance: 500,000,000 CatEarCoin</br>
+                * This value may be adjusted based on usage. Any adjustments will be announced in advance.</br>
+                ** Detailed release schedule after lock-up will be announced later.</br>
+                Technical Architecture</br>
+                CatEarCoin is based on blockchain technology to ensure transparency and fairness in transactions. Smart contracts are used to manage transactions and reward distribution both inside and outside the game.</br>
+                Security and Privacy</br>
+                Advanced encryption technology is used to protect user data and transaction security. Compliance with data protection regulations ensures user privacy.</br>
+                Development Roadmap</br>
+                1. Game development completion: Expected Q1 2024.</br>
+                2. CatEarCoin issuance: To be issued simultaneously with the game.</br>
+                3. Continuous updates: Regular updates for the game and CatEarCoin system.</br>
+                4. Ecosystem collaboration: Committed to establishing partnerships with other WEMIX-based ecosystems, to promote and popularize the application of CatEarCoin.</br>
+                5. Community building and governance: We will focus on community building and governance, encouraging players to participate in the decision-making process, and jointly promote the healthy development of the CatEarCoin ecosystem. A series of community rewards and governance mechanisms will be established.
+            </p>
+            
+        </div>
+    </div>
+	
+</body>
+
+<script src='js/elvactrl.js'></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+    var imgDiv = document.getElementById('bgDiv');
+    imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const files = [
+            { id: 'header', path: 'partials/header.html' },
+            // { id: 'back-c', path: 'partials/back-c.html' },
+            // { id: 'bottom', path: 'partials/bottom.html' }
+        ];
+
+        files.forEach(file => {
+            fetch(file.path)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(file.id).innerHTML = data;
+
+                    // 确保加载并执行每个文件中的脚本
+                    const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                    scriptTags.forEach(scriptTag => {
+                        const newScriptTag = document.createElement('script');
+                        newScriptTag.textContent = scriptTag.textContent;
+                        document.body.appendChild(newScriptTag);
+                    });
+                })
+                .catch(error => console.error(`Error loading ${file.path}:`, error));
+        });
+    });  
+</script>
+
+<script>
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 0,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 0,
+        autoplay: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true,
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
+    var galleryThumbsImg = new Swiper('.animalImg', {
+        autoplay: true,
+        navigation:{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="Idle Fantasy-PlayToEarn & Nft,NFT,Strategy,Idle,Card,Crypto,Blockchain,Challenges,Earn,Axie,CryptoKitties,Sandbox,DeFi,Gods,Mir">
+    <meta name="description" content="《Idle Fantasy-PlayToEarn & Nft》: Every Challenge is an Opportunity for Wealth and Adventure in NFT! Download Now!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+    <title>《Idle Fantasy-PlayToEarn & Nft》-Every Challenge is an Opportunity for Wealth and Adventure in NFT</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .title-icon-bar{ 
+            position: absolute;
+            left: 0;
+            top: 92px; /* Aligns directly below the header */
+            right: 0;
+            height: 150px; /* Example height */
+            z-index: 9; /* Lower than the header */
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px; /* Example padding */
+         }
+        .title-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .title-icon-img {
+            height: 100%;
+        }        
+        
+        .bg{ 
+            width: 100%;
+            position: absolute;
+            padding-top: 250px; 
+            height: 100vh;
+        }
+        .container{ 
+            width:90%;
+            height: calc(100% - 10px);
+            padding-bottom: 10px; 
+            overflow-y: auto; /* 启用垂直滚动 */
+            box-sizing: border-box; /* 确保内边距包含在高度内 */
+            color: white;
+            font-size: 18px;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 62px; /* 设置滚动条的宽度 */
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: none;
+            background: url('images/button3/meb-kj-1.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+            position: relative;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: url('images/button3/meb-line-1.png') no-repeat center center;
+        }
+
+        .staking-info {
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            right: 0;
+            height: 100px;
+            z-index: 9; /* Lower than the header */
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .staking-info button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .container button {
+            background-color: #4CAF50; /* 绿色 */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .input-group input {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="title-icon-bar">
+        <div class='title-icon'><img src='images/button3/meb-top.png' /></div>
+    </div>
+
+    <div id='bgDiv' class="bg">
+        <div class="container">
+            <p>
+                Cat Ear Coin (CEC) Testing 猫耳币测试.............</br>
+            </p>
+            <div id="contractFunctions">
+                <!-- 添加分割线 -->
+                <hr>
+                <h2>BNB代币</h2>
+                <p>
+                    BNB代币作为CEC代币的交易费用（gas），所有合约操作均需使用BNB。请先领取BNB测试币。
+                </p>
+
+                <div>
+                    <h3>领取BNB测试代币</h3>
+                    <label for="getBNBCoin">To Address:</label>
+                    <div class="input-group">
+                        <input type="text" id="getBNBCoin" name="getBNBCoin" placeholder="钱包地址0x123456" oninput="this.style.color='black'">
+                        <button onclick="showWalletModal('getBNBCoin',1)">▼</button>
+                    </div>
+                    <button onclick="getBNB()">获得BNB代币</button>
+                </div>
+                <!-- 添加分割线 -->
+                <hr>
+                <h2>代币合约BEP20 Token Contract</h2>
+                <p>
+                    CEC代币为币安智能链下发行的BEP20代币。
+                </p>
+                <div>
+                    <h3>转账Transfer</h3>
+                    <p>
+                        直接用于从调用者账户转移代币到接收者账户，适用于用户之间的普通代币转移。
+                    </p>
+                    <label for="transferTo">To Address:</label>
+                    <div class="input-group">
+                        <input type="text" id="transferTo" name="transferTo" placeholder="钱包地址0x123456" oninput="this.style.color='black'">
+                        <button onclick="showWalletModal('transferTo',1)">▼</button>
+                    </div>
+                    <label for="transferAmount">Amount:</label>
+                    <input type="number" id="transferAmount" name="transferAmount" placeholder="代币数量" oninput="this.style.color='black'">
+                    <br>
+                    <button onclick="transfer()">转账</button>
+                </div>
+                <div>
+                    <h3>授权Approve</h3>
+                    <p>
+                        用户用来授权，授权另一个地址可以代表自己转移代币，适用于需要智能合约代表自己操作代币的场景。
+                    </p>
+                    <label for="approveSpender">Spender Address:</label>
+                    <div class="input-group">
+                        <input type="text" id="approveSpender" name="approveSpender" placeholder="智能合约地址" oninput="this.style.color='black'">
+                        <button onclick="showWalletModal('approveSpender',2)">▼</button>
+                    </div>
+                    <label for="approveAmount">Amount:</label>
+                    <input type="number" id="approveAmount" name="approveAmount" placeholder="代币数量" oninput="this.style.color='black'">
+                    <br>
+                    <button onclick="approve()">授权</button>
+                </div>
+                <div>
+                    <h3>转账(授权)Transfer From</h3>
+                    <p>
+                        用于被授权智能合约，从授权者账户中转移代币，适用于需要自动化或委托转账的场景。
+                    </p>                    
+                    <label for="transferFromSender">From Address:</label>
+                    <div class="input-group">
+                        <input type="text" id="transferFromSender" name="transferFromSender" placeholder="转出钱包或智能合约地址0x123456" oninput="this.style.color='black'">
+                        <button onclick="showWalletModal('transferFromSender',3)">▼</button>
+                    </div>
+                    <label for="transferFromRecipient">To Address:</label>
+                    <div class="input-group">
+                        <input type="text" id="transferFromRecipient" name="transferFromRecipient" placeholder="转入钱包地址0x123456" oninput="this.style.color='black'">
+                        <button onclick="showWalletModal('transferFromRecipient',1)">▼</button>
+                    </div>
+                    <br>
+                    <label for="transferFromAmount">Amount:</label>
+                    <input type="number" id="transferFromAmount" name="transferFromAmount" placeholder="代币数量" oninput="this.style.color='black'">
+                    <br>
+                    <button onclick="transferFrom()">转账(授权)</button>
+                </div>
+
+                <!-- 添加分割线 -->
+                <hr>
+                <h2>质押合约Staking Contract</h2>
+                <p>
+                    将用户的代币传入质押合约，根据质押的时长给与代币作为奖励。质押设定了30天的锁定期，在锁定期间不能提取本金，但可以领取质押奖励。
+                </p>  
+                <div>
+                    <h3>质押代币Stake</h3>
+                    <p>
+                        质押操作，要用户向质押合约进行转账，必须要用户先进行授权approve。
+                    </p>  
+                    <label for="stakeAmount">Amount to Stake:</label>
+                    <input type="number" id="stakeAmount" name="stakeAmount" placeholder="质押代币数量" oninput="this.style.color='black'">
+                    <br>
+                    <button onclick="stake()">质押代币</button>
+                </div>
+                <div>
+                    <h3>领取本金Withdraw</h3>
+                    <label for="withdrawAmount">Amount to Withdraw:</label>
+                    <input type="number" id="withdrawAmount" name="withdrawAmount" placeholder="领取本金数量" oninput="this.style.color='black'">
+                    <br>
+                    <button onclick="withdraw()">领取本金</button>
+                </div>
+                <div>
+                    <h3>领取质押奖励Claim Rewards</h3>
+                    <button onclick="claimRewards()">领取质押奖励</button>
+                </div>
+
+                <!-- 添加分割线 -->
+                <hr>
+                <h2>空投合约Airdrop Contract</h2>
+                <p>
+                    空投合约用于免费将代币发放给用户。用户在领取空投的时间决定了其获得代币的数量。<br>
+                    - 基数代币数量为1000个CEC。<br>
+                    - 用户先进行登记。<br>
+                    - 在登记后30天内领取，获得基数代币的50%。<br>
+                    - 登记后31天到90天内领取，获得基数代币的100%。<br>
+                    - 登记超过90天后领取，获得基数代币的300%。
+                </p>
+                <div>
+                    <h3>登记空投Register</h3>
+                    <button onclick="registerForAirdrop()">Register</button>
+                </div>
+                <div>
+                    <h3>领取空投奖励Claim Airdrop</h3>
+                    <button onclick="claimAirdrop()">Claim Airdrop</button>
+                </div>
+
+                <!-- 添加分割线 -->
+                <hr>
+                <h2>游戏交易合约Game Exchange Contract</h2>
+                <p>
+                    承接玩家游戏道具 与 虚拟币 交换的作用。
+                </p>
+                <div>
+                    <h3>代币换道具Exchange Item For Tokens</h3>
+                    <label for="exchangeItemAmount">Token Amount:</label>
+                    <input type="number" id="exchangeItemAmount" name="exchangeItemAmount" placeholder="代币数量" oninput="this.style.color='black'">
+                    <br>
+                    <button onclick="exchangeItemForTokens()">Exchange</button>
+                </div>
+                <div>
+                    <h3>道具换代币Exchange Tokens For Item</h3>
+                    <label for="exchangeTokensAmount">Token Amount:</label>
+                    <input type="number" id="exchangeTokensAmount" name="exchangeTokensAmount" placeholder="代币数量" oninput="this.style.color='black'">
+                    <br>
+                    <button onclick="exchangeTokensForItem()">Exchange</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="walletModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWalletModal()">&times;</span>
+            <h2>选择钱包地址</h2>
+            <div id="walletAddresses"></div>
+        </div>
+    </div>
+</body>
+
+<script src='js/elvactrl.js'></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.js"></script>
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+<script>
+    var imgDiv = document.getElementById('bgDiv');
+    imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const files = [
+            { id: 'header', path: 'partials/header.html' },
+        ];
+
+        files.forEach(file => {
+            fetch(file.path)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(file.id).innerHTML = data;
+
+                    // 确保加载并执行每个文件中的脚本
+                    const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                    scriptTags.forEach(scriptTag => {
+                        const newScriptTag = document.createElement('script');
+                        newScriptTag.textContent = scriptTag.textContent;
+                        document.body.appendChild(newScriptTag);
+                    });
+                })
+                .catch(error => console.error(`Error loading ${file.path}:`, error));
+        });
+    });
+
+    window.onclick = function (event) {
+        var stakeModal = document.getElementById('stakeModal');
+        var withdrawModal = document.getElementById('withdrawModal');
+        var claimRewardsModal = document.getElementById('claimRewardsModal');
+        var exchangeItemForTokensModal = document.getElementById('exchangeItemForTokensModal');
+        var exchangeTokensForItemModal = document.getElementById('exchangeTokensForItemModal');
+
+        if (event.target == stakeModal) {
+            stakeModal.style.display = 'none';
+        }
+        if (event.target == withdrawModal) {
+            withdrawModal.style.display = 'none';
+        }
+        if (event.target == claimRewardsModal) {
+            claimRewardsModal.style.display = 'none';
+        }
+        if (event.target == exchangeItemForTokensModal) {
+            exchangeItemForTokensModal.style.display = 'none';
+        }
+        if (event.target == exchangeTokensForItemModal) {
+            exchangeTokensForItemModal.style.display = 'none';
+        }
+    }
+
+    window.ethereum.on('disconnect', (error) => {
+        console.log('MetaMask disconnected', error);
+    });
+
+    window.addEventListener('load', async () => {
+        if (window.ethereum) {
+            web3 = new Web3(window.ethereum);
+            try {
+                // await window.ethereum.request({ method: 'eth_requestAccounts' });
+                console.log('MetaMask connected');
+                initializeContract();
+            } catch (error) {
+                console.error("User denied account access");
+            }
+        } else if (window.web3) {
+            web3 = new Web3(window.web3.currentProvider);
+            initializeContract();
+        } else {
+            console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+        }
+    });
+
+    async function initializeContract() {
+        const response = await fetch('config/config.json');
+        const config = await response.json();
+
+        tokenOwner = config.tokenOwner;
+
+        tokenAddress = config.tokenAddress;
+        tokenABI = config.tokenABI;
+        stakingContractAddress = config.stakingContractAddress;
+        stakingContractABI = config.stakingContractABI;
+        airdropContractAddress = config.airdropContractAddress;
+        airdropContractABI = config.airdropContractABI;
+        gameExchangeContractAddress = config.gameExchangeContractAddress;
+        gameExchangeContractABI = config.gameExchangeContractABI;
+
+        tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
+        stakingContract = new web3.eth.Contract(stakingContractABI, stakingContractAddress);
+        airdropContract = new web3.eth.Contract(airdropContractABI, airdropContractAddress);
+        gameExchangeContract = new web3.eth.Contract(gameExchangeContractABI, gameExchangeContractAddress);
+
+        // console.log('tokenContract methods:', tokenContract.methods);
+        // console.log('stakingContract methods:', stakingContract.methods);
+        // console.log('airdropContract methods:', airdropContract.methods);
+        // console.log('gameExchangeContract methods:', gameExchangeContract.methods);
+    }
+
+    async function stake() {
+        const amount = document.getElementById('stakeAmount').value;
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await stakingContract.methods.stake(web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Staked ' + amount + ' CEC successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while staking.');
+        }
+    }
+
+    async function withdraw() {
+        const amount = document.getElementById('withdrawAmount').value;
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await stakingContract.methods.withdraw(web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Withdrawn ' + amount + ' CEC successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while withdrawing.');
+        }
+    }
+
+    async function claimRewards() {
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await stakingContract.methods.getReward().send({ from: account });
+            alert('Rewards claimed successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while claiming rewards.');
+        }
+    }
+
+    async function registerForAirdrop() {
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await airdropContract.methods.register().send({ from: account });
+            alert('Registered for airdrop successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while registering for airdrop.');
+        }
+    }
+
+    async function claimAirdrop() {
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await airdropContract.methods.claimAirdrop().send({ from: account });
+            alert('Airdrop claimed successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while claiming airdrop.');
+        }
+    }
+
+    async function exchangeItemForTokens() {
+        const amount = document.getElementById('exchangeItemAmount').value;
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await gameExchangeContract.methods.exchangeItemForTokens(web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Exchanged item for ' + amount + ' CEC successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while exchanging item for tokens.');
+        }
+    }
+
+    async function exchangeTokensForItem() {
+        const amount = document.getElementById('exchangeTokensAmount').value;
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await gameExchangeContract.methods.exchangeTokensForItem(web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Exchanged ' + amount + ' CEC for item successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while exchanging tokens for item.');
+        }
+    }
+
+    async function getBNB() {
+      const url = 'https://testnet.binance.org/faucet-smart/api'; // API的URL
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // 添加其他需要的头信息
+          },
+          body: JSON.stringify({
+            // 添加请求体，根据API文档的要求填写
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Success:', data);
+        // 处理返回的数据
+      } catch (error) {
+        console.error('Failed to fetch BNB:', error);
+        // 处理错误
+      }
+    }
+
+
+
+    async function transfer() {
+        const to = document.getElementById('transferTo').value;
+        const amount = document.getElementById('transferAmount').value;
+ 
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await tokenContract.methods.transfer(to, web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Transferred ' + amount + ' tokens to ' + to + ' successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while transferring tokens.');
+        }
+    }
+
+    async function approve() {
+        const spender = document.getElementById('approveSpender').value;
+        const amount = document.getElementById('approveAmount').value;
+
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await tokenContract.methods.approve(spender, web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Approved ' + amount + ' tokens for ' + spender + ' successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while approving tokens.');
+        }
+    }
+
+    async function transferFrom() {
+        const from = document.getElementById('transferFromSender').value;
+        const to = document.getElementById('transferFromRecipient').value;
+        const amount = document.getElementById('transferFromAmount').value;
+
+        const account = localStorage.getItem('selectedAccount');
+        if (!account) {
+            connectWallet();
+            return;
+        }
+
+        try {
+            await tokenContract.methods.transferFrom(from, to, web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Transferred ' + amount + ' tokens from ' + from + ' to ' + to + ' successfully');
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while transferring tokens.');
+        }
+    }
+
+    //选择钱包地址
+    var selectedInputId;
+    //钱包&智能合约地址 1钱包地址 2智能合约地址 3钱包地址+所有智能合约地址 4代币合约
+    function showWalletModal(inputId, addressType) {
+        selectedInputId = inputId;
+        var walletModal = document.getElementById('walletModal');
+        walletModal.style.display = 'block';
+
+        var walletAddresses = [];
+        var contractAddresses = [];
+        var addressPrefix = '';
+
+        if (addressType == 1) {
+            walletAddresses = JSON.parse(localStorage.getItem('walletAccounts'));
+            if (!walletAddresses || walletAddresses.length === 0) {
+                connectWallet();
+                return;
+            }
+        } else if (addressType == 2) {
+            contractAddresses.push(stakingContractAddress);
+            contractAddresses.push(airdropContractAddress);
+            contractAddresses.push(gameExchangeContractAddress);
+        } else if (addressType == 3) {
+            walletAddresses = JSON.parse(localStorage.getItem('walletAccounts'));
+            if (!walletAddresses || walletAddresses.length === 0) {
+                connectWallet();
+                return;
+            }
+            contractAddresses.push(stakingContractAddress);
+            contractAddresses.push(airdropContractAddress);
+            contractAddresses.push(gameExchangeContractAddress);
+        } else {
+            contractAddresses.push(tokenAddress);
+        }
+
+        var walletAddressesDiv = document.getElementById('walletAddresses');
+        walletAddressesDiv.innerHTML = '';
+
+        if (addressType == 3 || addressType == 1) {
+            walletAddresses.forEach(address => {
+                var addressElement = document.createElement('p');
+                addressElement.textContent = '钱包地址: ' + address;
+                addressElement.style.cursor = 'pointer';
+                addressElement.onclick = function() {
+                    var inputField = document.getElementById(selectedInputId);
+                    inputField.value = address;
+                    inputField.style.color = 'black';
+                    closeWalletModal();
+                };
+                walletAddressesDiv.appendChild(addressElement);
+            });
+        }
+
+        if (addressType == 3 || addressType == 2) {
+            contractAddresses.forEach(address => {
+                var addressElement = document.createElement('p');
+                addressElement.textContent = '智能合约地址: ' + address;
+                addressElement.style.cursor = 'pointer';
+                addressElement.onclick = function() {
+                    var inputField = document.getElementById(selectedInputId);
+                    inputField.value = address;
+                    inputField.style.color = 'black';
+                    closeWalletModal();
+                };
+                walletAddressesDiv.appendChild(addressElement);
+            });
+        }
+    }
+
+    function closeWalletModal() {
+        var walletModal = document.getElementById('walletModal');
+        walletModal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        var walletModal = document.getElementById('walletModal');
+        if (event.target == walletModal) {
+            walletModal.style.display = 'none';
+        }
+    }
+
+</script>
+
+</html>
