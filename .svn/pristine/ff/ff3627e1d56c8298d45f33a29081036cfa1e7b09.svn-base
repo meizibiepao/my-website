@@ -1,0 +1,109 @@
+<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script src="js/script.js"></script>
+    <div class="header">
+        <div class='title-bar'>
+            <div class="des-btn-bar">
+                <div class="des-btn">
+                    <div class="icon-btn">
+                        <img src='images/icon.png'>
+                    </div>
+                </div>
+                <button class="dropdown-button" onclick="window.location.href='index.html'" onmouseenter="showDropdown('Home')" onmouseleave="hideDropdown('Home')" data-translate="home">Home</button>
+                <div id="Home" class="dropdown-content" onmouseenter="showDropdown('Home')" onmouseleave="hideDropdown('Home')"></div>
+                <div class="des-btn">
+                    <button class="dropdown-button" onclick="toggleDropdown('About')" onmouseenter="showDropdown('About')" onmouseleave="hideDropdown('About')" data-translate="about">About ∨</button>
+                    <div id="About" class="dropdown-content" onmouseenter="showDropdown('About')" onmouseleave="hideDropdown('About')">
+                    <!--项目介绍-->
+                        <a href="ProjectIntroduction.html" data-translate="project_introduction">Project Introduction</a>
+                    <!--团队信息-->
+                    <!-- <a href="Team.html">Team</a> -->
+                    <!--白皮书-->
+                        <a href="WhitePaper.html" data-translate="white_paper">WhitePaper</a>
+                    </div>
+                </div>
+                <div class="des-btn">
+                    <button class="dropdown-button" onclick="toggleDropdown('MarketPlace')" onmouseenter="showDropdown('MarketPlace')" onmouseleave="hideDropdown('MarketPlace')" data-translate="marketplace">MarketPlace ∨</button>
+                    <div id="MarketPlace" class="dropdown-content" onmouseenter="showDropdown('MarketPlace')" onmouseleave="hideDropdown('MarketPlace')">
+                    <!--市场概览-->
+                        <a href="MarketOverview.html" data-translate="market_overview">Market Overview</a>
+                    <!--交易指南-->
+                        <a href="TransactionGuidelines.html" data-translate="transaction_guidelines">Transaction Guidelines</a>
+                    </div>
+                </div>
+                <div class="des-btn">
+                    <button class="dropdown-button" onclick="toggleDropdown('CECCOIN')" onmouseenter="showDropdown('CECCOIN')" onmouseleave="hideDropdown('CECCOIN')" data-translate="cec_coin">CEC COIN ∨</button>
+                    <div id="CECCOIN" class="dropdown-content" onmouseenter="showDropdown('CECCOIN')" onmouseleave="hideDropdown('CECCOIN')">
+                    <!--代币概述-->
+                        <a href="TokenOverview.html" data-translate="token_overview">Token Overview</a>
+                    <!--经济模型-->
+                        <a href="EconomicModel.html" data-translate="economic_model">Economic Model</a>
+                    <!--市场行情-->
+                        <a href="MarketConditions.html" data-translate="market_conditions">Market Conditions</a>
+                    <!--质押指南-->
+                        <a href="Staking.html" data-translate="staking">Staking</a>
+                    <!--代币空投-->
+                        <a href="AirDrop.html" data-translate="airdrop">AirDrop</a>
+                    </div>
+                </div>
+                <div class="des-btn">
+                    <button class="dropdown-button" onclick="toggleDropdown('Support')" onmouseenter="showDropdown('Support')" onmouseleave="hideDropdown('Support')" data-translate="support">Support ∨</button>
+                    <div id="Support" class="dropdown-content" onmouseenter="showDropdown('Support')" onmouseleave="hideDropdown('Support')">
+                    <!--常见问题-->
+                        <a href="FAQ.html" data-translate="faq">FAQ</a>
+                    <!--测试-->
+                        <a href="Testing.html" data-translate="testing">Testing</a>
+                    </div>
+                </div>
+                <div class="des-btn">
+                    <div class="icon-lang" onmouseenter="showDropdown('Language')" onmouseleave="hideDropdown('Language')">
+                        <img src='images/header/Language_Icon.png'>
+                    </div>
+                    <div id="Language" class="dropdown-content" onmouseenter="showDropdown('Language')" onmouseleave="hideDropdown('Language')">
+                        <a href="#" onclick="changeLanguage('en')">English</a>
+                        <a href="#" onclick="changeLanguage('zh-CN')">简体中文</a>
+                        <a href="#" onclick="changeLanguage('zh-TW')">繁體中文</a>
+                        <a href="#" onclick="changeLanguage('ko')">한국어</a>
+                    </div>
+                </div>
+
+                <div class="des-btn">
+                    <div class="icon-wallet">
+                        <img src='images/header/MetaMask_Icon.png'></div>
+                    </div>
+                    <button class="dropdown-button" id="connectWalletBtn" onclick="handleWalletButtonClick()" onmouseenter="handleWalletButtonMouseEnter()" onmouseleave="hideDropdown('ConnectWallet')" data-translate="connect_wallet">Connect Wallet</button>
+                    <div id="ConnectWallet" class="dropdown-content" onmouseenter="showDropdown('ConnectWallet')" onmouseleave="hideDropdown('ConnectWallet')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmLogout" class="modalx">
+        <div class="confirmLogout-content">
+            <p data-translate="logout_wallet">logout Wallet Account?</p>
+            <div class="button-container">
+                <button onclick="logout()" data-translate="logout">logout</button>
+                <button onclick="closeLogoutModal()" data-translate="cancel">cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="floatingText" class="floating-text"></div>
+
+    <script>
+        // 确保 updateWalletButton 在加载 header.html 后调用
+        if (typeof updateWalletButton === 'function') {
+            updateWalletButton();
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                updateWalletButton();
+            });
+        }
+
+        document.addEventListener('languageChange', () => {
+            console.log("languageChange - header");
+            const language = localStorage.getItem('language');
+            loadTranslations(language);
+        });
+
+
+    </script>

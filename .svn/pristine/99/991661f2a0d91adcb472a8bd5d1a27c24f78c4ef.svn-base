@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="Idle Fantasy-PlayToEarn & Nft,NFT,Strategy,Idle,Card,Crypto,Blockchain,Challenges,Earn,Axie,CryptoKitties,Sandbox,DeFi,Gods,Mir">
+        <meta name="description" content="《Idle Fantasy-PlayToEarn & Nft》: Every Challenge is an Opportunity for Wealth and Adventure in NFT! Download Now!">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <title data-translate="title">《Idle Fantasy-PlayToEarn & Nft》-Every Challenge is an Opportunity for Wealth and Adventure in NFT</title>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/slick.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <script src="js/elvactrl.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/language.js"></script>
+
+        <style>
+            .title-icon-bar{ 
+                position: absolute;
+                left: 0;
+                top: 92px; /* Aligns directly below the header */
+                right: 0;
+                height: 150px; /* Example height */
+                z-index: 9; /* Lower than the header */
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 20px; /* Example padding */
+
+             }
+            .title-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            .title-icon-img {
+                height: 100%;
+            }        
+            
+            .bg{ 
+                position: absolute;
+                padding-top: 250px; 
+                height: 100vh;
+            }
+            .container{ 
+                position: absolute;
+                width:90%;
+                height: calc(100% - 250px);
+                bottom: 10px;
+                overflow-y: auto; 
+                box-sizing: border-box; 
+                color: white;
+                font-size: 18px;
+            }
+
+            .container::-webkit-scrollbar {
+                width: 62px; /* 设置滚动条的宽度 */
+            }
+
+            .container::-webkit-scrollbar-thumb {
+                background: none;
+                background: url('images/button3/meb-kj-1.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: auto;
+                position: relative;
+            }
+
+            .container::-webkit-scrollbar-track {
+                background: url('images/button3/meb-line-1.png') no-repeat center center;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <div id="header"></div> 
+        <div class="title-icon-bar">
+            <div class='title-icon'><img src='images/button3/meb-top.png' /></div>
+        </div>
+
+        <div id='bgDiv' class="bg">
+            <div class="container" data-translate="cec_project_introduction">
+                <p>
+                Project Introduction: IDLE GOG X</br>
+                </br>
+                Vision and Goals</br>
+                We are dedicated to reshaping the future of card games through blockchain and artificial intelligence technologies. Our vision is to create a platform that is not just for entertainment but an ecosystem where players' efforts and achievements can be converted into real value. Our goals include:</br>
+                </br>
+                1. Enhancing Player Experience: By incorporating blockchain and AI technologies, we ensure the game is fair, transparent, and intelligent.</br>
+                2. Establishing a Decentralized Market: Allowing players to freely trade their in-game assets and truly own their in-game items.</br>
+                3. Promoting Game Innovation: Continuously introducing new features and activities to keep the game fresh and challenging.</br>
+                </br>
+                Project Features and Unique Selling Points</br>
+                </br>
+                1. Play to Earn:</br>
+                   Our game not only provides entertainment but also a play-to-earn mechanism. Players can earn valuable tokens by achieving victories in the game, which can be traded in the market for actual profits.</br>
+                </br>
+                2. Card Strategy Gameplay:</br>
+                   The game features an innovative card strategy gameplay, requiring players to use strategic card combinations to defeat opponents. This gameplay tests players' thinking abilities and adds fun and challenges to the game.</br>
+                </br>
+                3. Blockchain Technology:</br>
+                   We use advanced blockchain technology to ensure fairness and transparency in the game. All in-game transactions and battle records are stored on the blockchain, ensuring they cannot be tampered with.</br>
+                </br>
+                4. Artificial Intelligence:</br>
+                   The game incorporates AI technology to provide an intelligent gaming experience. AI helps new players get started quickly and offers personalized suggestions based on their play style. AI also detects and prevents cheating, ensuring fairness.</br>
+                </br>
+                5. Decentralized Market:</br>
+                   Players can freely trade their game assets, including cards, items, and tokens, in our market. This free trading environment not only adds depth to the game but also provides players with real economic benefits.</br>
+                </br>
+                Economic Model</br>
+                </br>
+                The total issuance of Cat Ear Coins (CEC) is 1 billion (1,000,000,000), distributed as follows:</br>
+                </br>
+                1. Community Incentives (40%)</br>
+                   - Total: 400 million CEC</br>
+                   - Usage: Rewards for player activity, ad views, task completions, etc. Aimed at encouraging user participation and increasing community engagement.</br>
+                </br>
+                2. Team and Advisors (15%)</br>
+                   - Total: 150 million CEC</br>
+                   - Usage: Rewards for the development team and advisors to incentivize ongoing product optimization, technical support, and strategic guidance. These tokens will unlock in stages to ensure long-term motivation.</br>
+                </br>
+                3. Marketing (10%)</br>
+                   - Total: 100 million CEC</br>
+                   - Usage: For marketing and promotional activities, including ad placements, event sponsorships, social media promotions, etc., to increase CEC's visibility and acceptance.</br>
+                </br>
+                4. Ecosystem Fund (10%)</br>
+                   - Total: 100 million CEC</br>
+                   - Usage: To support ecosystem development, including developer incentive programs, community building, and partnerships. Aimed at expanding CEC's application in more blockchain games.</br>
+                </br>
+                5. Reserve Fund (5%)</br>
+                   - Total: 50 million CEC</br>
+                   - Usage: Reserved for emergencies or special projects to ensure the project's long-term sustainability.</br>
+                </br>
+                6. Private Sale (10%)</br>
+                   - Total: 100 million CEC</br>
+                   - Usage: Fundraising through private sales for early development and project launch. Private sales will target strategic partners and institutional investors, offering certain discounts.</br>
+                </br>
+                7. Public Sale (10%)</br>
+                   - Total: 100 million CEC</br>
+                   - Usage: Fundraising through public sales for further development, marketing, and ecosystem building. Public sales will target public investors, ensuring project transparency and community involvement.</br>
+                </br>
+                Future Outlook</br>
+                </br>
+                Our future plans include expanding game features and the ecosystem:</br>
+                </br>
+                1. Introducing More Game Modes: Such as multiplayer co-op and arena modes to diversify gameplay.</br>
+                2. Expanding to International Markets: Entering more countries and regions to attract global players.</br>
+                3. Bringing in More Partners: Collaborating with more blockchain projects and gaming companies to enrich game content and the ecosystem.</br>
+                4. Enhancing Community Interaction: Regularly hosting online and offline events to boost player community interaction and engagement.</br>
+                5. Expanding the Game Ecosystem: Developing more applications and services based on CEC to increase its utility and value.</br>
+                6. Continuously Launching New Activities and Rewards: Regularly introducing new game activities and reward mechanisms to maintain player interest and engagement.</br>
+                </br>
+                We believe that through continuous innovation and effort, we will become a leader in the blockchain card game field, ushering players into a new gaming world.</br>
+                </p>
+                
+            </div>
+        </div>
+        
+    </body>
+
+    <script src='js/elvactrl.js'></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        var imgDiv = document.getElementById('bgDiv');
+        imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const files = [
+                { id: 'header', path: 'partials/header.html' },
+                // { id: 'back-c', path: 'partials/back-c.html' },
+                // { id: 'bottom', path: 'partials/bottom.html' }
+            ];
+
+            files.forEach(file => {
+                fetch(file.path)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(file.id).innerHTML = data;
+
+                        // 确保加载并执行每个文件中的脚本
+                        const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                        scriptTags.forEach(scriptTag => {
+                            const newScriptTag = document.createElement('script');
+                            newScriptTag.textContent = scriptTag.textContent;
+                            document.body.appendChild(newScriptTag);
+                        });
+                    })
+                    .catch(error => console.error(`Error loading ${file.path}:`, error));
+            });
+            //加载时读取已保存的语言
+            const savedLanguage = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
+            changeLanguage(savedLanguage);
+        });  
+        document.addEventListener('languageChange', () => {
+            const language = localStorage.getItem('language');
+            loadTranslations(language);
+        });
+    </script>
+
+</html>

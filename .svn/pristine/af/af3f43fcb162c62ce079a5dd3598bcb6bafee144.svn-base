@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="Idle Fantasy-PlayToEarn & Nft,NFT,Strategy,Idle,Card,Crypto,Blockchain,Challenges,Earn,Axie,CryptoKitties,Sandbox,DeFi,Gods,Mir">
+    <meta name="description" content="《Idle Fantasy-PlayToEarn & Nft》: Every Challenge is an Opportunity for Wealth and Adventure in NFT! Download Now!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+    <title>《Idle Fantasy-PlayToEarn & Nft》-Every Challenge is an Opportunity for Wealth and Adventure in NFT</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .title-icon-bar{ 
+            position: absolute;
+            left: 0;
+            top: 92px; /* Aligns directly below the header */
+            right: 0;
+            height: 150px; /* Example height */
+            z-index: 9; /* Lower than the header */
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px; /* Example padding */
+
+         }
+        .title-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .title-icon-img {
+            height: 100%;
+        }        
+        
+        .bg{ 
+            position: absolute;
+            padding-top: 250px; 
+            height: 100vh;
+        }
+        .container{ 
+            width:90%;
+            height: calc(100% - 20px);
+            padding-bottom: 10px; 
+            overflow-y: auto; /* 启用垂直滚动 */
+            box-sizing: border-box; /* 确保内边距包含在高度内 */
+            color: white;
+            font-size: 18px;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 62px; /* 设置滚动条的宽度 */
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: none;
+            background: url('images/button3/meb-kj-1.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+            position: relative;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: url('images/button3/meb-line-1.png') no-repeat center center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="header"></div> 
+    <div class="title-icon-bar">
+        <div class='title-icon'><img src='images/button3/meb-top.png' /></div>
+    </div>
+
+    <div id='bgDiv' class="bg">
+        <div class="container">
+            <p>
+            Cat Ear Coin (CEC) FAQ</br>
+            </br>
+            1. What is Cat Ear Coin (CEC)?</br>
+               Cat Ear Coin (CEC) is the primary token used in our innovative card strategy game ecosystem. It is built on blockchain technology to ensure fairness, transparency, and decentralization within the game.</br>
+            </br>
+            2. How can I purchase CEC?</br>
+               CEC can be purchased on several major decentralized exchanges (DEX) such as Uniswap and PancakeSwap. You will need to create an account on these platforms and have a compatible cryptocurrency wallet to store your CEC.</br>
+            </br>
+            3. What is the total supply of CEC?</br>
+               The total supply of Cat Ear Coin is 1 billion (1,000,000,000) tokens.</br>
+            </br>
+            4. How is CEC distributed?</br>
+               - Community Incentives: 40% (400 million CEC)</br>
+               - Team and Advisors: 15% (150 million CEC)</br>
+               - Marketing: 10% (100 million CEC)</br>
+               - Ecosystem Fund: 10% (100 million CEC)</br>
+               - Reserve Fund: 5% (50 million CEC)</br>
+               - Private Sale: 10% (100 million CEC)</br>
+               - Public Sale: 10% (100 million CEC)</br>
+            </br>
+            5. What are the uses of CEC within the game?</br>
+               CEC can be used for:</br>
+               - Purchasing in-game assets such as cards and items.</br>
+               - Participating in special events and tournaments.</br>
+               - Trading with other players in the decentralized market.</br>
+               - Earning rewards through the Play to Earn mechanism.</br>
+            </br>
+            6. How can I earn CEC?</br>
+               Players can earn CEC by:</br>
+               - Winning battles and completing missions within the game.</br>
+               - Participating in community activities and events.</br>
+               - Watching ads and engaging with promotional content.</br>
+               - Trading in-game assets and tokens on the decentralized market.</br>
+            </br>
+            7. What are the benefits of using blockchain technology for CEC?</br>
+               Blockchain technology provides:</br>
+               - Enhanced security and transparency for all transactions.</br>
+               - True ownership of in-game assets, allowing players to trade freely.</br>
+               - Immutable records of game activities and transactions, ensuring fairness.</br>
+            </br>
+            8. How does the Play to Earn mechanism work?</br>
+               Players earn CEC by achieving victories in the game, completing tasks, and participating in events. These tokens can then be traded on the market for real-world value or used within the game.</br>
+            </br>
+            9. What is the current market price of CEC?</br>
+               The market price of CEC is subject to change based on market conditions. Please refer to real-time market data on decentralized exchanges or our official website for the latest price.</br>
+            </br>
+            10. How do I store my CEC tokens?</br>
+               CEC tokens can be stored in any cryptocurrency wallet that supports the blockchain on which CEC is built. Make sure to keep your wallet secure and back up your private keys.</br>
+            </br>
+            11. Can I trade CEC with other cryptocurrencies?</br>
+               Yes, CEC can be traded with other cryptocurrencies on decentralized exchanges that support CEC trading pairs.</br>
+            </br>
+            12. How can I stay updated with the latest news and updates about CEC?</br>
+               You can stay updated by following our official social media channels, joining our community forums, and regularly visiting our official website.</br>
+            </br>
+            13. What should I do if I encounter issues with my CEC transactions?</br>
+               If you encounter any issues with your CEC transactions, please contact our customer support team through the official website or community support channels for assistance.</br>
+            </br>
+            14. Is there a roadmap for the future development of CEC?</br>
+               Yes, we have a comprehensive roadmap outlining future developments, including new game features, international expansion, partnerships, and community activities. Details are available on our official website.</br>
+            </br>
+            15. How does the governance mechanism work for CEC?</br>
+               CEC incorporates a decentralized governance mechanism where community members can participate in decision-making processes related to the project’s development and future direction. This ensures that the community has a say in the evolution of the ecosystem.</br>
+            </br>
+            If you have more questions, feel free to reach out through our official channels or check our detailed documentation on the website.</br>
+            </p>
+            
+        </div>
+    </div>
+    
+</body>
+
+<script src='js/elvactrl.js'></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+    var imgDiv = document.getElementById('bgDiv');
+    imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const files = [
+            { id: 'header', path: 'partials/header.html' },
+            // { id: 'back-c', path: 'partials/back-c.html' },
+            // { id: 'bottom', path: 'partials/bottom.html' }
+        ];
+
+        files.forEach(file => {
+            fetch(file.path)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(file.id).innerHTML = data;
+
+                    // 确保加载并执行每个文件中的脚本
+                    const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                    scriptTags.forEach(scriptTag => {
+                        const newScriptTag = document.createElement('script');
+                        newScriptTag.textContent = scriptTag.textContent;
+                        document.body.appendChild(newScriptTag);
+                    });
+                })
+                .catch(error => console.error(`Error loading ${file.path}:`, error));
+        });
+    });  
+</script>
+
+<script>
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 0,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 0,
+        autoplay: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true,
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
+    var galleryThumbsImg = new Swiper('.animalImg', {
+        autoplay: true,
+        navigation:{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="Idle Fantasy-PlayToEarn & Nft,NFT,Strategy,Idle,Card,Crypto,Blockchain,Challenges,Earn,Axie,CryptoKitties,Sandbox,DeFi,Gods,Mir">
+    <meta name="description" content="《Idle Fantasy-PlayToEarn & Nft》: Every Challenge is an Opportunity for Wealth and Adventure in NFT! Download Now!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+    <title data-translate="title">《Idle Fantasy-PlayToEarn & Nft》-Every Challenge is an Opportunity for Wealth and Adventure in NFT</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="js/elvactrl.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/language.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+    <style>
+        .title-icon-bar{ 
+            position: absolute;
+            left: 0;
+            top: 92px; /* Aligns directly below the header */
+            right: 0;
+            height: 150px; /* Example height */
+            z-index: 9; /* Lower than the header */
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px; /* Example padding */
+         }
+        .title-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .title-icon-img {
+            height: 100%;
+        }        
+        
+        .bg{ 
+            position: absolute;
+            padding-top: 250px; 
+            height: 100vh;
+        }
+        .container{ 
+            position: absolute;
+            width:90%;
+            height: calc(100% - 250px - 100px);
+            bottom: 100px;
+            overflow-y: auto; 
+            box-sizing: border-box; 
+            color: white;
+            font-size: 18px;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 62px; /* 设置滚动条的宽度 */
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: none;
+            background: url('images/button3/meb-kj-1.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+            position: relative;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: url('images/button3/meb-line-1.png') no-repeat center center;
+        }
+
+        .staking-info {
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            right: 0;
+            height: 100px;
+            z-index: 9; /* Lower than the header */
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .staking-info button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="header"></div> 
+    <div class="title-icon-bar">
+        <div class='title-icon'><img src='images/button3/meb-top.png' /></div>
+    </div>
+
+    <div id='bgDiv' class="bg">
+        <div class="container" data-translate="staking_guide">
+            <p>
+            Cat Ear Coin (CEC) Staking Guide</br>
+            </br>
+            Cat Ear Coin (CEC) can be used not only for in-game purchases and market transactions but also for earning additional rewards through staking. Staking involves locking your tokens in the blockchain network to support its operation and security, while earning rewards in return. Below is a detailed guide on staking Cat Ear Coin, helping you understand the staking process, rewards, and considerations.</br>
+            </br>
+            1. What is Staking?</br>
+            </br>
+            Staking is a mechanism in the cryptocurrency ecosystem that allows token holders to lock their tokens to support the operation and security of the blockchain network. In return, stakers receive additional token rewards. This mechanism not only enhances the network's stability and security but also provides a passive income opportunity for token holders.</br>
+            </br>
+            2. Benefits of Staking</br>
+            </br>
+            - Earn Rewards: Stakers can earn additional CEC as rewards, increasing their token holdings.</br>
+            - Support the Network: Staking helps enhance the security and stability of the blockchain network.</br>
+            - Community Participation: By staking, token holders can participate more deeply in community governance and project development.</br>
+            </br>
+            3. Staking Process</br>
+            </br>
+            Staking Cat Ear Coin is straightforward. Here are the specific steps:</br>
+            </br>
+            1. Preparation:</br>
+               - Install a Cryptocurrency Wallet: You need a compatible cryptocurrency wallet to store and stake CEC. We recommend using MetaMask, Trust Wallet, or other wallets that support the ERC-20 standard.</br>
+               - Acquire Cat Ear Coin (CEC): Obtain CEC through market purchases, game rewards, or other channels.</br>
+            </br>
+            2. Connect Your Wallet:</br>
+               - Visit our staking platform's official website and connect your cryptocurrency wallet.</br>
+            </br>
+            3. Select a Staking Plan:</br>
+               - We offer various staking plans. You can choose a suitable staking period and yield based on your needs. Typically, the longer the staking period, the higher the yield.</br>
+            </br>
+            4. Confirm Staking:</br>
+               - Enter the amount of CEC you wish to stake and confirm the staking. Your wallet will prompt a confirmation window showing the staking details and transaction fees. Carefully review and confirm the staking.</br>
+            </br>
+            5. Wait for Staking Confirmation:</br>
+               - The blockchain network will process your staking request, which usually takes a few minutes. Once confirmed, you can view the staking status and rewards on the staking platform's dashboard.</br>
+            </br>
+            4. Staking Rewards</br>
+            </br>
+            Staking rewards are additional CEC earned during the staking process. The specific reward rate varies depending on the staking plan and market conditions. Common reward mechanisms include:</br>
+            </br>
+            - Fixed Yield: Some staking plans offer a fixed annual yield, such as 5% or 10% per annum.</br>
+            - Variable Yield: Based on market conditions and the total staked amount, the variable yield rate may fluctuate.</br>
+            </br>
+            Staking rewards are usually distributed periodically, such as weekly or monthly. After the staking period ends, you can choose to continue staking or withdraw your principal and rewards.</br>
+            </br>
+            5. Unstaking</br>
+            </br>
+            Unstaking refers to the process of retrieving your locked CEC and making them freely tradable. Here are the steps:</br>
+            </br>
+            1. Access the Staking Platform: Go to the staking platform's dashboard.</br>
+            2. Select Unstake: Choose the plan you wish to unstake and enter the amount to be unstaked.</br>
+            3. Confirm Transaction: Your wallet will prompt a confirmation window. Carefully review the transaction details and fees, then confirm the unstaking.</br>
+            4. Wait for Processing: The blockchain network will process your unstaking request, which typically takes some time. Once confirmed, the CEC will return to your wallet.</br>
+            </br>
+            6. Considerations</br>
+            </br>
+            - Lock-Up Period: During the staking period, your CEC will be locked and cannot be freely traded. Ensure you understand and accept this before staking.</br>
+            - Transaction Fees: You need to pay transaction fees (gas fees) for staking and unstaking. Ensure you have enough ETH in your wallet to cover these fees.</br>
+            - Market Risk: While staking can earn rewards, the cryptocurrency market is volatile, which may affect your overall returns.</br>
+            </br>
+            7. Frequently Asked Questions</br>
+            </br>
+            - What is the minimum staking requirement?</br>
+              - Different staking plans may have different minimum staking requirements. Please refer to the specific plan details.</br>
+            </br>
+            - Can I add more CEC to my stake during the staking period?</br>
+              - Some staking plans allow additional staking during the staking period. Please refer to the staking platform's rules.</br>
+            </br>
+            - How are staking rewards calculated?</br>
+              - Staking rewards are calculated based on the staked amount, duration, and plan yield. You can view the specific reward calculation method on the staking platform.</br>
+            </br>
+            Conclusion</br>
+            </br>
+            The Cat Ear Coin (CEC) staking mechanism provides token holders with a way to increase their returns while supporting the blockchain network's operation and security. By choosing a suitable staking plan, you can enjoy additional rewards while participating in the game and market trading. Thank you for your participation and support. If you have any questions or need further assistance, please contact our support team or visit our official website.</br>
+            </p>
+            
+        </div>
+
+        <div class="staking-info">
+            <button data-translate="stake_button" onclick="openStakeModal()">Stake</button>
+            <button data-translate="withdraw_button" onclick="openWithdrawModal()">Withdraw Principal</button>
+            <button data-translate="claim_rewards_button" onclick="openClaimRewardsModal()">Claim Rewards</button>
+        </div>
+    </div>
+    <!-- 质押界面 -->
+    <div id="stakeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeStakeModal()">&times;</span>
+            <h2 data-translate="stake_modal_title">Stake Cat Ear Coin (CEC)</h2>
+            <label for="stakeAmount" data-translate="stake_modal_label">Amount to Stake:</label>
+            <input type="number" id="stakeAmount" name="stakeAmount">
+            <button data-translate="stake_modal_confirm" onclick="confirmStake()">Confirm Stake</button>
+        </div>
+    </div>
+    
+    <!-- 领取本金界面 -->
+    <div id="withdrawModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWithdrawModal()">&times;</span>
+            <h2 data-translate="withdraw_modal_title">Withdraw Principal</h2>
+            <p id="stakedBalance" data-translate="withdraw_modal_balance">Principal Available for Withdrawal: <span id="stakedBalanceAmount">0</span> CEC</p>
+            <p id="lockEndTimeContainer" style="display: none;" data-translate="withdraw_modal_lockend">End of Staking Period: <span id="lockEndTime">N/A</span></p>
+            <label for="withdrawAmount" data-translate="withdraw_modal_label">Amount to Withdraw:</label>
+            <input type="number" id="withdrawAmount" name="withdrawAmount">
+            <button data-translate="withdraw_modal_confirm" onclick="confirmWithdraw()">Confirm Withdraw</button>
+        </div>
+    </div>
+    <!-- 领取质押奖励界面 -->
+    <div id="claimRewardsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeClaimRewardsModal()">&times;</span>
+            <h2 data-translate="claim_modal_title">Claim Rewards</h2>
+            <p data-translate="claim_modal_reward">Staking Rewards Available: <span id="rewardAmount">0</span> CEC</p>
+            <button data-translate="claim_modal_confirm" onclick="confirmClaimRewards()">Claim Rewards</button>
+        </div>
+    </div>
+</body>
+
+
+
+
+<script>
+    var imgDiv = document.getElementById('bgDiv');
+    imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const files = [
+            { id: 'header', path: 'partials/header.html' },
+            // { id: 'back-c', path: 'partials/back-c.html' },
+            // { id: 'bottom', path: 'partials/bottom.html' }
+        ];
+
+        files.forEach(file => {
+            fetch(file.path)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(file.id).innerHTML = data;
+
+                    // 确保加载并执行每个文件中的脚本
+                    const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                    scriptTags.forEach(scriptTag => {
+                        const newScriptTag = document.createElement('script');
+                        newScriptTag.textContent = scriptTag.textContent;
+                        document.body.appendChild(newScriptTag);
+                    });
+                })
+                .catch(error => console.error(`Error loading ${file.path}:`, error));
+        });
+        //加载时读取已保存的语言
+        const savedLanguage = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
+        changeLanguage(savedLanguage);
+    });  
+    
+    document.addEventListener('languageChange', () => {
+        const language = localStorage.getItem('language');
+        loadTranslations(language);
+    });
+
+    //质押界面
+     function openStakeModal() {
+        const account = localStorage.getItem('walletAccount');
+        if (account) {
+            document.getElementById('stakeModal').style.display = 'block';
+        }else{
+            connectWallet()
+        }
+    }
+
+    function closeStakeModal() {
+        document.getElementById('stakeModal').style.display = 'none';
+    }
+
+    //调用智能合约的Stake函数
+    async function confirmStake() {
+        const amount = document.getElementById('stakeAmount').value;
+
+        if (amount <= 0) {
+            alert('Amount must be greater than 0');
+            return;
+        }
+
+
+        const accounts = await web3.eth.getAccounts();
+        const account = accounts[0];
+        // const account = localStorage.getItem('walletAccount');
+
+        console.log("amount = ",amount);
+        console.log("account = ",account);
+        console.log("contract = ",contract);
+
+        try {
+
+            const allowance = await tokenContract.methods.allowance(account, contractAddress).call();
+            console.log("allowance = ", allowance);
+
+            const weiAmount = web3.utils.toWei(amount, 'ether');
+            console.log("weiAmount = ", weiAmount);
+            if (parseInt(allowance) < parseInt(weiAmount)) {
+                // Approve the required amount
+                await tokenContract.methods.approve(contractAddress, weiAmount).send({ from: account });
+                alert('Approval successful. You can now stake.');
+            }
+
+            contract.methods.stake(web3.utils.toWei(amount, 'ether')).send({ from: account });
+            alert('Staked ' + amount + ' CEC successfully');
+            closeStakeModal();
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while staking.');
+        }
+
+        closeStakeModal();
+    }
+
+    //领取本金界面
+    async function openWithdrawModal() {
+        const account = localStorage.getItem('walletAccount');
+        if (account) {
+            try {
+                const result = await contract.methods.stakedBalance(account).call();
+                const balanceAmount = web3.utils.fromWei(result[0], 'ether');
+                const lockEndTimeTimestamp = result[1];
+
+                console.log("balanceAmount = ", balanceAmount);
+                document.getElementById('stakedBalanceAmount').textContent = balanceAmount;
+                document.getElementById('withdrawAmount').value = balanceAmount;
+
+                if (parseFloat(balanceAmount) > 0) {
+                    const lockEndTime = new Date(lockEndTimeTimestamp * 1000);
+                    const lockEndTimeString = lockEndTime.getFullYear() + '-' +
+                                              ('0' + (lockEndTime.getMonth() + 1)).slice(-2) + '-' +
+                                              ('0' + lockEndTime.getDate()).slice(-2) + ' ' +
+                                              ('0' + lockEndTime.getHours()).slice(-2) + ':' +
+                                              ('0' + lockEndTime.getMinutes()).slice(-2);
+                    document.getElementById('lockEndTime').textContent = lockEndTimeString;
+                    document.getElementById('lockEndTimeContainer').style.display = 'block';
+                } else {
+                    document.getElementById('lockEndTimeContainer').style.display = 'none';
+                }
+
+                document.getElementById('withdrawModal').style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching staked balance:', error);
+                alert('An error occurred while fetching staked balance.');
+            }
+        } else {
+            connectWallet();
+        }
+    }
+
+    function closeWithdrawModal() {
+        document.getElementById('withdrawModal').style.display = 'none';
+    }
+    //调用质押合约的withdraw函数
+    async function confirmWithdraw() {
+        const amount = document.getElementById('withdrawAmount').value;
+
+        if (amount <= 0) {
+            alert('Amount must be greater than 0');
+            return;
+        }
+
+        const accounts = await web3.eth.getAccounts();
+        const account = accounts[0];
+        const result = await contract.methods.stakedBalance(account).call();
+        const lockEndTimeTimestamp = result[1];
+
+        const currentTime = Math.floor(Date.now() / 1000);
+        if (currentTime < lockEndTimeTimestamp) {
+            alert('Wait until the end of staking period to withdraw the principal');
+            return;
+        }
+
+        console.log("amount =", amount);
+        console.log("account =", account);
+        console.log("contract =", contract);
+
+        try {
+            const weiAmount = web3.utils.toWei(amount, 'ether');
+            await contract.methods.withdraw(weiAmount).send({ from: account });
+            alert('Withdrawn ' + amount + ' CEC successfully');
+            closeWithdrawModal();
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while withdrawing.');
+        }
+
+        closeWithdrawModal();
+    }
+    //领取质押奖励界面
+    async function openClaimRewardsModal() {
+        const account = localStorage.getItem('walletAccount');
+        if (account) {
+            try {
+                const rewardAmount = await contract.methods.rewardBalance(account).call();
+                const rewardAmountInEther = web3.utils.fromWei(rewardAmount, 'ether');
+                const rewardAmountFormatted = parseFloat(rewardAmountInEther).toFixed(2);
+
+                document.getElementById('rewardAmount').textContent = rewardAmountFormatted;
+
+                document.getElementById('claimRewardsModal').style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching reward balance:', error);
+                alert('An error occurred while fetching reward balance.');
+            }
+        } else {
+            connectWallet();
+        }
+    }
+
+    function closeClaimRewardsModal() {
+        document.getElementById('claimRewardsModal').style.display = 'none';
+    }
+    //调用智能合约getReward函数
+    async function confirmClaimRewards() {
+        const accounts = await web3.eth.getAccounts();
+        const account = accounts[0];
+
+        try {
+            const rewardAmount = await contract.methods.rewardBalance(account).call();
+            const rewardAmountInEther = web3.utils.fromWei(rewardAmount, 'ether');
+
+            if (parseFloat(rewardAmountInEther) < 0.01) {
+                alert('The minimum reward amount to claim is 0.01 CEC.');
+                return;
+            }
+
+            await contract.methods.getReward().send({ from: account });
+            alert('Rewards claimed successfully');
+            closeClaimRewardsModal();
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while claiming rewards.');
+        }
+    }
+
+    window.onclick = function(event) {
+        var stakeModal = document.getElementById('stakeModal');
+        var withdrawModal = document.getElementById('withdrawModal');
+        var claimRewardsModal = document.getElementById('claimRewardsModal');
+        
+        if (event.target == stakeModal) {
+            stakeModal.style.display = 'none';
+        }
+        if (event.target == withdrawModal) {
+            withdrawModal.style.display = 'none';
+        }
+        if (event.target == claimRewardsModal) {
+            claimRewardsModal.style.display = 'none';
+        }
+    }
+
+    window.ethereum.on('disconnect', (error) => {
+        console.log('MetaMask disconnected', error);
+    });
+
+    window.addEventListener('load', async () => {
+        if (window.ethereum) {
+            // Modern dapp browsers...
+            web3 = new Web3(window.ethereum);
+            try {
+                // 请求账号访问权限
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                console.log('MetaMask connected');
+                initializeContract();
+            } catch (error) {
+                console.error("User denied account access");
+            }
+        } else if (window.web3) {
+            // Legacy dapp browsers...
+            web3 = new Web3(window.web3.currentProvider);
+            initializeContract();
+        } else {
+            console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+        }
+    });
+
+    async function initializeContract() {
+        const response = await fetch('config/config.json');
+        const config = await response.json();
+
+        tokenAddress = config.tokenAddress;
+        tokenABI = config.tokenABI;
+        contractAddress = config.stakingContractAddress;
+        contractABI = config.stakingContractABI;
+
+        contract = new web3.eth.Contract(contractABI, contractAddress);
+        tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
+
+    }
+
+
+</script>
+</html>

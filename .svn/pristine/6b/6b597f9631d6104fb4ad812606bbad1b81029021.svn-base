@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="Idle Fantasy-PlayToEarn & Nft,NFT,Strategy,Idle,Card,Crypto,Blockchain,Challenges,Earn,Axie,CryptoKitties,Sandbox,DeFi,Gods,Mir">
+        <meta name="description" content="《Idle Fantasy-PlayToEarn & Nft》: Every Challenge is an Opportunity for Wealth and Adventure in NFT! Download Now!">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <title data-translate="title">《Idle Fantasy-PlayToEarn & Nft》-Every Challenge is an Opportunity for Wealth and Adventure in NFT</title>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/slick.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <script src="js/elvactrl.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/slick.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/language.js"></script>
+
+        <style>
+            .title-icon-bar{ 
+                position: absolute;
+                left: 0;
+                top: 92px; /* Aligns directly below the header */
+                right: 0;
+                height: 150px; /* Example height */
+                z-index: 9; /* Lower than the header */
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 20px; /* Example padding */
+
+             }
+            .title-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            .title-icon-img {
+                height: 100%;
+            }        
+            
+            .bg{ 
+                position: absolute;
+                padding-top: 250px; 
+                height: 100vh;
+            }
+            .container{ 
+                position: absolute;
+                width:90%;
+                height: calc(100% - 250px);
+                bottom: 10px;
+                overflow-y: auto; 
+                box-sizing: border-box; 
+                color: white;
+                font-size: 18px;
+            }
+
+            .container::-webkit-scrollbar {
+                width: 62px; /* 设置滚动条的宽度 */
+            }
+
+            .container::-webkit-scrollbar-thumb {
+                background: none;
+                background: url('images/button3/meb-kj-1.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: auto;
+                position: relative;
+            }
+
+            .container::-webkit-scrollbar-track {
+                background: url('images/button3/meb-line-1.png') no-repeat center center;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <div id="header"></div> 
+        <div class="title-icon-bar">
+            <div class='title-icon'><img src='images/button3/meb-top.png' /></div>
+        </div>
+
+        <div id='bgDiv' class="bg">
+            <div class="container" data-translate="cec_market_overview">
+                <p>
+                Market Overview</br>
+                </br>
+                Market Introduction</br>
+                </br>
+                The Cat Ear Coin (CEC) decentralized market is designed to provide players with a secure, transparent, and efficient trading platform, allowing them to freely buy and sell in-game assets, including cards, items, and tokens. Our market is built on blockchain technology, ensuring that all transactions are public and immutable, thereby increasing user trust and engagement.</br>
+                </br>
+                Market Features</br>
+                </br>
+                1. Asset Trading:</br>
+                   - Cards and Items: Players can buy and sell various in-game cards and items on the market. Each asset is unique, and its authenticity and scarcity are guaranteed by smart contracts on the blockchain.</br>
+                   - Token Trading: Players can trade Cat Ear Coin (CEC) and exchange it with other cryptocurrencies on the market. The market supports various trading pairs, providing flexible trading options for players.</br>
+                </br>
+                2. Transaction Records:</br>
+                   - Transparency: All transaction records are stored on the blockchain and can be queried and verified by anyone. This transparency ensures the fairness and security of the market.</br>
+                   - Immutability: Blockchain technology ensures that transaction records cannot be altered, preventing any form of fraud.</br>
+                </br>
+                3. User Interface:</br>
+                   - User-Friendly: The market's user interface is simple and intuitive, allowing new users to get started quickly. It also offers advanced features to meet the needs of experienced players.</br>
+                   - Real-Time Data: Provides real-time market data and trading dynamics to help users make informed trading decisions.</br>
+                </br>
+                4. Security:</br>
+                   - Smart Contracts: The market uses smart contracts to execute transactions, ensuring automation and security.</br>
+                   - User Protection: Provides multi-factor authentication and encryption technology to protect users' accounts and assets.</br>
+                </br>
+                Market Incentive Mechanisms</br>
+                </br>
+                1. Trading Rewards:</br>
+                   - Low Fees: The market charges very low transaction fees to encourage more users to participate in trading.</br>
+                   - Trading Rewards: Active traders are rewarded to increase market liquidity.</br>
+                </br>
+                2. Community Participation:</br>
+                   - User Feedback: Encourages users to provide feedback on market features and experiences, continuously optimizing the market based on their input.</br>
+                   - Community Governance: Cat Ear Coin holders can participate in market governance, voting on important decisions and development directions.</br>
+                </br>
+                Market Development Plans</br>
+                </br>
+                1. Expanding Asset Range:</br>
+                   - More Game Support: In the future, the market will support the trading of more game assets, expanding its coverage.</br>
+                   - Cross-Chain Asset Trading: Develop cross-chain trading capabilities, allowing users to trade assets across different blockchains.</br>
+                </br>
+                2. Optimizing User Experience:</br>
+                   - Mobile Support: Launch a mobile app for the market, enabling users to trade anytime, anywhere.</br>
+                   - Enhanced Features: Continuously introduce new features such as auctions and limit orders to improve market flexibility and user experience.</br>
+                </br>
+                3. International Market Expansion:</br>
+                   - Multi-Language Support: The market will support multiple languages, making it convenient for users worldwide.</br>
+                   - Global Promotion: Attract more international users through marketing and partnerships.</br>
+                </br>
+                4. Partnerships:</br>
+                   - Blockchain Project Collaboration: Collaborate with other blockchain projects to jointly promote the development of the decentralized market.</br>
+                   - Game Developer Collaboration: Partner with game developers to introduce more high-quality game assets and enhance the market's appeal.</br>
+                </br>
+                Conclusion</br>
+                </br>
+                The Cat Ear Coin (CEC) decentralized market not only provides players with a secure and transparent trading platform but also continuously improves market liquidity and user experience through various incentive mechanisms and development plans. We are committed to innovation and optimization, aiming to create a leading global blockchain game asset trading market that delivers real value and rewards to players.</br>
+                </p>
+                
+            </div>
+        </div>
+        
+    </body>
+
+    <script>
+        var imgDiv = document.getElementById('bgDiv');
+        imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const files = [
+                { id: 'header', path: 'partials/header.html' },
+                // { id: 'back-c', path: 'partials/back-c.html' },
+                // { id: 'bottom', path: 'partials/bottom.html' }
+            ];
+
+            files.forEach(file => {
+                fetch(file.path)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(file.id).innerHTML = data;
+
+                        // 确保加载并执行每个文件中的脚本
+                        const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                        scriptTags.forEach(scriptTag => {
+                            const newScriptTag = document.createElement('script');
+                            newScriptTag.textContent = scriptTag.textContent;
+                            document.body.appendChild(newScriptTag);
+                        });
+                    })
+                    .catch(error => console.error(`Error loading ${file.path}:`, error));
+            });
+            //加载时读取已保存的语言
+            const savedLanguage = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
+            changeLanguage(savedLanguage);
+        });  
+        document.addEventListener('languageChange', () => {
+            const language = localStorage.getItem('language');
+            loadTranslations(language);
+        });
+    </script>
+
+</html>

@@ -1,0 +1,90 @@
+
+    <div class="bottom">
+        <div class="p3">
+            <div class="logoBottom"><img src="images/logo.png" ></div>
+            <div class="swiper">
+                <div class="animalImg">
+                    <div class="swiper-wrapper ">
+                        <div class="swiper-slide"><img src="images/p3/3-01.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="images/p3/3-02.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="images/p3/3-03.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="images/p3/3-04.jpg" alt=""></div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"><img src="images/jt.png" alt=""></div>
+                <div class="swiper-button-prev"><img src="images/jt.png" alt=""></div>
+            </div>
+            <div class="bottom-txt text-center"><img src="images/wz-b.png"></div>
+            <div class="footer text-center">
+                <a href="https://idlefantasy.idlehole.com/privacy/en/privacypolicy.html" style="color: white;" target="_blank" data-translate="privacy_policy">Privacy Policy</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="https://idlefantasy.idlehole.com/privacy/en/userprivacy.html" style="color: white;" target="_blank" data-translate="terms_of_use">Terms of Use</a>
+                <br/><br/><span data-translate="company_name">GAMEWINNER (HONGKONG) NETWORK TECHNOLOGY CO., LIMITED.</span> <span data-translate="all_rights_reserved">All Rights Reserved.</span><br>
+                <span data-translate="address">FLAT B5，1/F MANNING IND. BLDG 116-118 HOW MING STREET KWUN TONG KL,HongKong</span><br>
+                <img src="images/icon01.png"> <a href="https://www.facebook.com/Idlefantasynft" style="color: white;" data-translate="facebook_link">https://www.facebook.com/Idlefantasynft</a>
+            </div>
+        </div>
+        <div id="bigImg" onclick="clickBigImg()">
+            <div style="background:#000;opacity:0.7;width:100vw;height:100vh;position: fixed;left: 0;top: 0;"></div>
+            <img id="bigImgimg" src="" alt="clickShowBigImg">
+            <img id="wxcodebgimg" src="" alt="clickShowBigImg">
+            <img id="wxcodebg" src="images/wxcodebg.png" alt="wxcodebg">
+        </div>
+        <img id="open" src="images/open.jpg" alt="open">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const files = [
+                { id: 'header', path: 'partials/header.html' }
+            ];
+
+            files.forEach(file => {
+                fetch(file.path)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(file.id).innerHTML = data;
+                        const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                        scriptTags.forEach(scriptTag => {
+                            const newScriptTag = document.createElement('script');
+                            newScriptTag.textContent = scriptTag.textContent;
+                            document.body.appendChild(newScriptTag);
+                        });
+                    })
+                    .catch(error => console.error(`Error loading ${file.path}:`, error));
+            });
+        });
+
+        document.addEventListener('languageChange', () => {
+            console.log("languageChange - bottom");
+            const language = localStorage.getItem('language');
+            loadTranslations(language);
+        });
+
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 0,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 0,
+            autoplay: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            thumbs: {
+                swiper: galleryThumbs
+            }
+        });
+        var galleryThumbsImg = new Swiper('.animalImg', {
+            autoplay: true,
+            navigation:{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        });
+
+    </script>

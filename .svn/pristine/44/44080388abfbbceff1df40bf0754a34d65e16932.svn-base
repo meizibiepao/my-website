@@ -1,0 +1,79 @@
+
+    <div class="back-c">
+        <div class="container">
+            <div class="title minText-center"><img src="images/logo.png"></div>
+            <div class="width-sm">
+                <div class="swiper-container gallery-top" onclick="clickImg(event)">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="width-sx">
+                                <div class="img-xs"><img src="images/p2/01.jpg"></div>
+                                <div class="img-txt" data-translate="embark_description">Embark on the Cloud Summit Tower and commence your Play to Earn journey. In this innovative NFT gameplay, each level is filled with challenges and rewards. The higher you climb, the greater the potential returns. Utilize strategy and skills to overcome opponents while earning substantial rewards. Every victory signifies not just progress in the game but also an opportunity for your wealth to grow. Begin your adventure right away and ascend to the pinnacle of glory!<br></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="width-sx">
+                                <div class="img-xs"><img src="images/p2/02.jpg"></div>
+                                <div class="img-txt" data-translate="dragon_hunt_description">
+                                    <p>The Dragon Hunt dungeon challenges your courage and skills. You will battle against five powerful dragons: Water Dragon, Fire Dragon, Wood Dragon, Light Dragon, and Dark Dragon, striving for victory in these intense battles. Players can freely combine equipment and skills to create the best battle strategy for their heroes. The heroes' combat abilities will determine whether they can successfully hunt the dragons and become true heroes.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="width-sx">
+                                <div class="img-xs"><img src="images/p2/03.jpg"></div>
+                                <div class="img-txt" data-translate="battle_troy_description">The Battle of Troy is an exciting PvP gameplay where players can showcase their combat skills and strategic abilities by participating in real-time battles. By selecting and equipping their heroes with the best gear and developing a sound battle plan, players can defeat their opponents and emerge victorious. Additionally, by completing challenges and quests, players can continuously enhance their strength and climb the ranks of the leaderboard. In Troy Battle, players will experience endless combat fun and highly challenging matches.</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="width-sx">
+                                <div class="img-xs"><img src="images/p2/04.jpg"></div>
+                                <div class="img-txt" data-translate="hero_summoning_description">With the power of the five elements, summon your desired hero and embark on a legendary journey of summoning! Every summoning will bring you endless surprises. With the blessing of the heroes, your team will become stronger and capable of completing more challenges. Can you meet rare heroes and perfectly form your team during the summoning, becoming the most dazzling commander in the continent of Genesis?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="width-lg">
+            <div class="swiper-container gallery-thumbs">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="slick-b"><img src="images/p2/01.jpg"><span data-translate="magic_mirror_hall">Magic Mirror Hall</span></div></div>
+                    <div class="swiper-slide"><div class="slick-b"><img src="images/p2/02.jpg"><span data-translate="dragon_hunt">Dragon Hunt</span></div></div>
+                    <div class="swiper-slide"><div class="slick-b"><img src="images/p2/03.jpg"><span data-translate="battle_troy">Battle of Troy</span></div></div>
+                    <div class="swiper-slide"><div class="slick-b"><img src="images/p2/04.jpg"><span data-translate="hero_summoning">Hero Summoning</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const files = [
+                { id: 'header', path: 'partials/header.html' }
+            ];
+
+            files.forEach(file => {
+                fetch(file.path)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(file.id).innerHTML = data;
+                        const scriptTags = document.querySelectorAll(`#${file.id} script`);
+                        scriptTags.forEach(scriptTag => {
+                            const newScriptTag = document.createElement('script');
+                            newScriptTag.textContent = scriptTag.textContent;
+                            document.body.appendChild(newScriptTag);
+                        });
+                    })
+                    .catch(error => console.error(`Error loading ${file.path}:`, error));
+            });
+        });
+
+        document.addEventListener('languageChange', () => {
+            console.log("languageChange - back-c");
+            const language = localStorage.getItem('language');
+            loadTranslations(language);
+        });
+
+    </script>
+
