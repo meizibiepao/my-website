@@ -129,5 +129,9 @@
     "exchange_tokens_title": "Exchange Tokens For Item",
     "exchange_tokens_amount": "Token Amount:",
     "exchange_tokens_button": "Exchange",
-    "wallet_modal_title": "Select Wallet Address"
+    "wallet_modal_title": "Select Wallet Address",
+    "tokenClaim_contract": "tokenClaim_contract",
+    "token_contract": "token_contract",
+    "wallet_address": "wallet_address",
+    "tokenOwner_address": "tokenOwner_address"
 }

@@ -129,5 +129,9 @@
     "exchange_tokens_title": "代幣換道具",
     "exchange_tokens_amount": "代幣數量：",
     "exchange_tokens_button": "交換",
-    "wallet_modal_title": "選擇錢包地址"
+    "wallet_modal_title": "選擇錢包地址",
+    "tokenClaim_contract": "代幣領取合約",
+    "token_contract": "代幣合約",
+    "wallet_address": "錢包地址",
+    "tokenOwner_address": "錢包擁有者地址"
 }

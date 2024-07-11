@@ -127,5 +127,9 @@
     "exchange_tokens_title": "토큰을 아이템으로 교환",
     "exchange_tokens_amount": "토큰 금액:",
     "exchange_tokens_button": "교환",
-    "wallet_modal_title": "지갑 주소 선택"
+    "wallet_modal_title": "지갑 주소 선택",
+    "tokenClaim_contract": "토큰 수령 계약",
+    "token_contract": "토큰 계약",
+    "wallet_address": "지갑 주소",
+    "tokenOwner_address": "지갑 소유자 주소"
 }

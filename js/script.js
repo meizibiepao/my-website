@@ -29,6 +29,7 @@ document.querySelectorAll('.des-btn').forEach(btn => {
 });
 
 function adjustDropdownPosition(dropdown,dropdownId) {
+
     if (dropdownId == 'ConnectWallet')
     {
         var trigger = document.getElementById('connectWalletBtn');
@@ -69,7 +70,6 @@ function hideDropdown(dropdownId) {
 
 // 连接钱包函数
 async function connectWallet() {
-    console.log("connectWallet");
     if (typeof window.ethereum !== 'undefined') {
         try {
             // 请求账户访问权限
@@ -81,8 +81,6 @@ async function connectWallet() {
             // 保存账号信息到 LocalStorage
             localStorage.setItem('walletAccounts', JSON.stringify(accounts));
             localStorage.setItem('selectedAccount', accounts[0]);
-
-            console.log("connectWallet!!!!!");
 
             updateWalletButton();
             showFloatingText('Wallet account is already logged in');
@@ -99,23 +97,21 @@ function updateWalletButton() {
     const accounts = JSON.parse(localStorage.getItem('walletAccounts'));
     const selectedAccount = localStorage.getItem('selectedAccount');
     const connectWalletBtn = document.getElementById('connectWalletBtn');
-    
-    console.log("accounts = ",accounts);
-    console.log("selectedAccount = ",selectedAccount);
-    console.log("connectWalletBtn = ",connectWalletBtn);
 
     if (accounts && selectedAccount && connectWalletBtn) {
         // 保留前6位和后4位，中间用3个点表示
         const shortAccount = selectedAccount.substring(0, 6) + '...' + selectedAccount.substring(selectedAccount.length - 4);
         connectWalletBtn.innerText = shortAccount;
-        console.log("Connect Wallet钱包地址：shortAccount = ",connectWalletBtn.innerText);
-        console.log("Connect Wallet钱包地址：shortAccount = ",shortAccount);
 
         const dropdown = document.getElementById('ConnectWallet');
         dropdown.innerHTML = accounts.map(account => {
             const shortAccountText = account.substring(0, 6) + '...' + account.substring(account.length - 4);
             return `<a href="#" onclick="switchAccount('${account}')">${account === selectedAccount ? `<strong>${shortAccountText}</strong>` : shortAccountText}</a>`;
         }).join('') + '<a href="#" onclick="logout()">Logout</a>';
+
+        connectWalletBtn.removeAttribute('data-translate');
+    }else{
+        connectWalletBtn.setAttribute('data-translate', 'connect_wallet');
     }
 }
 

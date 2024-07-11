@@ -131,6 +131,7 @@
         imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
 
         document.addEventListener("DOMContentLoaded", function() {
+            let filesLoaded = 0;
             const files = [
                 { id: 'header', path: 'partials/header.html' },
                 // { id: 'back-c', path: 'partials/back-c.html' },
@@ -141,25 +142,28 @@
                 fetch(file.path)
                     .then(response => response.text())
                     .then(data => {
+                        // console.log("data = ",data);
                         document.getElementById(file.id).innerHTML = data;
 
-                        // 确保加载并执行每个文件中的脚本
                         const scriptTags = document.querySelectorAll(`#${file.id} script`);
                         scriptTags.forEach(scriptTag => {
                             const newScriptTag = document.createElement('script');
                             newScriptTag.textContent = scriptTag.textContent;
                             document.body.appendChild(newScriptTag);
                         });
+
+                        filesLoaded++;
+                        if (filesLoaded === files.length) {
+                            // 所有文件加载完成后，调用 loadTranslations
+                            loadTranslations();
+                        }
                     })
                     .catch(error => console.error(`Error loading ${file.path}:`, error));
             });
-            //加载时读取已保存的语言
-            const savedLanguage = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
-            changeLanguage(savedLanguage);
-        });  
+
+        });
         document.addEventListener('languageChange', () => {
-            const language = localStorage.getItem('language');
-            loadTranslations(language);
+            loadTranslations();
         });
     </script>
 </html>
