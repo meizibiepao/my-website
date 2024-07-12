@@ -131,5 +131,9 @@
     "tokenClaim_contract": "토큰 수령 계약",
     "token_contract": "토큰 계약",
     "wallet_address": "지갑 주소",
-    "tokenOwner_address": "지갑 소유자 주소"
+    "tokenOwner_address": "지갑 소유자 주소",
+    "switch_network_button": "BSC 테스트넷으로 전환",
+    "add_token_button": "테스트 토큰 추가",
+    "bnb_testnet_info": "먼저 MetaMask에 BNB 테스트넷과 테스트 토큰을 추가하십시오."
+    
 }

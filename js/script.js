@@ -70,6 +70,33 @@ function hideDropdown(dropdownId) {
 
 // 连接钱包函数
 async function connectWallet() {
+    showDebugMessage("connectWallet!!!!!!!!");
+    // console.log("connectWallet");
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        // 生成返回网址并通过 deep link 打开 MetaMask
+        const returnUrl = encodeURIComponent(window.location.href);
+        // const metaMaskDeepLink = `metamask://dapp.metamask.io?redirect=${returnUrl}`;
+        // const metaMaskDeepLink = `metamask://dapp.metamask.io/wc?uri=wc:xyz@1?bridge=https%3A%2F%2Fbridge.walletconnect.org&key=xyz&redirect=${returnUrl}`;
+         // const metaMaskDeepLink = `https://metamask.app.link/dapp/${window.location.hostname}?redirect=${returnUrl}`;
+        const metaMaskDeepLink = `metamask://dapp.metamask.io/?redirect=${returnUrl}`;
+
+        showDebugMessage("metaMaskDeepLink = ",metaMaskDeepLink);
+
+        // 尝试通过 deep link 打开 MetaMask 应用
+        window.location.href = metaMaskDeepLink;
+
+        // 如果深链打开失败，提示用户安装 MetaMask
+        setTimeout(() => {
+            if (document.visibilityState === 'visible') {
+                alert('MetaMask is not installed. You will be redirected to MetaMask.');
+                window.location.href = "https://metamask.io/download.html";
+            }
+        }, 3000);
+        return;
+    }
+
     if (typeof window.ethereum !== 'undefined') {
         try {
             // 请求账户访问权限
@@ -79,8 +106,7 @@ async function connectWallet() {
             });
 
             // 保存账号信息到 LocalStorage
-            localStorage.setItem('walletAccounts', JSON.stringify(accounts));
-            localStorage.setItem('selectedAccount', accounts[0]);
+            saveAccountsToLocalStorage(accounts);
 
             updateWalletButton();
             showFloatingText('Wallet account is already logged in');
@@ -91,6 +117,52 @@ async function connectWallet() {
     } else {
         alert('MetaMask is not installed. Please install it to use this feature.');
     }
+
+    
+}
+
+// 处理从 MetaMask 返回后的状态
+function handleMetaMaskReturn() {
+    showDebugMessage("handleMetaMaskReturn!!!!!!!!");
+    const urlParams = new URLSearchParams(window.location.search);
+    const walletAddress = urlParams.get('address');
+
+    if (walletAddress) {
+        const accounts = [walletAddress];
+        saveAccountsToLocalStorage(accounts);
+
+        updateWalletButton();
+        showFloatingText('Wallet account is already logged in');
+    } else {
+        // 如果没有获取到钱包地址，尝试请求账户访问权限
+        if (typeof window.ethereum !== 'undefined') {
+            try {
+                window.ethereum.request({
+                    method: 'eth_requestAccounts',
+                    params: [{ eth_accounts: {} }]
+                }).then((accounts) => {
+                    saveAccountsToLocalStorage(accounts);
+                    updateWalletButton();
+                    showFloatingText('Wallet account is already logged in');
+                }).catch((error) => {
+                    console.error("User rejected the request or there was an error", error);
+                    alert('Failed to connect wallet. Please ensure MetaMask is unlocked and try again.');
+                });
+            } catch (error) {
+                console.error("User rejected the request or there was an error", error);
+                alert('Failed to connect wallet. Please ensure MetaMask is unlocked and try again.');
+            }
+        } else {
+            alert('MetaMask is not installed. Please install it to use this feature.');
+        }
+    }
+}
+// window.addEventListener('load', handleMetaMaskReturn);
+
+
+function saveAccountsToLocalStorage(accounts) {
+    localStorage.setItem('walletAccounts', JSON.stringify(accounts));
+    localStorage.setItem('selectedAccount', accounts[0]);
 }
 
 function updateWalletButton() {
@@ -161,4 +233,29 @@ function showFloatingText(message) {
     setTimeout(() => {
         floatingText.style.display = 'none';
     }, 3000); // 3 seconds
+}
+
+//测试
+function showDebugMessage(message) {
+    console.log(message);  // 在控制台输出
+    const debugElement = document.getElementById('debugMessage');
+    if (!debugElement) {
+        const newDebugElement = document.createElement('div');
+        newDebugElement.id = 'debugMessage';
+        newDebugElement.style.position = 'fixed';
+        newDebugElement.style.bottom = '20px';
+        newDebugElement.style.right = '20px';
+        newDebugElement.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        newDebugElement.style.color = '#fff';
+        newDebugElement.style.padding = '10px';
+        newDebugElement.style.borderRadius = '5px';
+        document.body.appendChild(newDebugElement);
+    }
+    document.getElementById('debugMessage').textContent = message;
+    setTimeout(() => {
+        const elem = document.getElementById('debugMessage');
+        if (elem) {
+            elem.remove();
+        }
+    }, 5000);  // 5 seconds
 }

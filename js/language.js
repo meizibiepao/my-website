@@ -48,6 +48,27 @@ function applyTranslations(translations) {
     });
 }
 
+async function fetchTranslations() {
+    let language = localStorage.getItem('language');
+    if (language === 'cn') {
+        language = 'zh-CN';
+    } else if (['en', 'ko', 'zh-CN', 'zh-TW'].indexOf(language) === -1) {
+        language = 'en';
+    }
+
+    try {
+        const response = await fetch(`translations/${language}.json`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error loading translations:', error);
+        return {};
+    }
+}
+
 // document.addEventListener('DOMContentLoaded', () => {
 //     const savedLanguage = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';
 //     console.log(`Initial language set to: ${savedLanguage}`);

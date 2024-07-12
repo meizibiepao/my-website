@@ -13,14 +13,13 @@
     <link href="css/slick.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <script src="js/elvactrl.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/slick.js"></script>
     <script src="js/script.js"></script>
     <script src="js/language.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script> -->
-    <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+    <!-- <script src="js/web3functions.js"></script>  -->
+    <script src="js/web3functions.js" defer></script>
 
     <style>
         .title-icon-bar{ 
@@ -181,6 +180,13 @@
             <div id="contractFunctions">
                 <hr>
                 <h2 style="text-align: center;" data-translate="bnb_token">BNB Token</h2>
+                <p data-translate="bnb_testnet_info">Please first add the BNB Testnet and the test token in MetaMask.</p>
+                <div>
+                    <button onclick="switchNetwork()" data-translate="switch_network_button">Switch to BSC Testnet</button>
+                    <button onclick="addToken()" data-translate="add_token_button">Add Test Token</button>
+                </div>
+
+                <div class="dashed-separator"></div>
                 <p data-translate="bnb_intro">BNB tokens are used as gas fees for CEC token transactions, and all contract operations require BNB. Please claim BNB test tokens first.</p>
                 <div>
                     <h3 data-translate="get_bnb_title">Claim BNB Test Tokens</h3>
@@ -189,7 +195,7 @@
                         <input type="text" id="getBNBCoin" name="getBNBCoin" placeholder="Wallet Address 0x123456" oninput="this.style.color='black'">
                         <button onclick="showWalletModal('getBNBCoin',[1])">▼</button>
                     </div>
-                    <button data-translate="get_bnb_button" onclick="getBNB()">Get BNB Tokens</button>
+                    <button data-translate="get_bnb_button" onclick="claimBNB()">Get BNB Tokens</button>
                     <p data-translate="get_bnb_note">If local call fails, please visit the following site to claim BNB test tokens:</p>
                     <a data-translate="bnb_faucet" href="https://www.bnbchain.org/en/testnet-faucet" target="_blank" style="color: #007bff; text-decoration: underline;">https://www.bnbchain.org/en/testnet-faucet</a>
                 </div>
@@ -203,9 +209,8 @@
                         <input type="text" id="getCECCoin" name="getCECCoin" placeholder="Wallet Address 0x123456" oninput="this.style.color='black'">
                         <button onclick="showWalletModal('getCECCoin',[1])">▼</button>
                     </div>
-                    <button data-translate="get_cec_button" onclick="getCEC()">Get CEC Tokens</button>
+                    <button data-translate="get_cec_button" onclick="claimCEC()">Get CEC Tokens</button>
                 </div>
-
 
                 <hr>
                 <h2 style="text-align: center;" data-translate="bep20_token">BEP20 Token Contract</h2>
@@ -221,7 +226,7 @@
                     <label for="transferAmount" data-translate="transfer_amount">Amount:</label>
                     <input type="number" id="transferAmount" name="transferAmount" placeholder="Token Amount" oninput="this.style.color='black'">
                     <br>
-                    <button data-translate="transfer_button" onclick="transfer()">Transfer</button>
+                    <button data-translate="transfer_button" onclick="transferTokens()">Transfer</button>
                 </div>
                 <div class="dashed-separator"></div>
                 <div>
@@ -235,7 +240,7 @@
                     <label for="approveAmount" data-translate="approve_amount">Amount:</label>
                     <input type="number" id="approveAmount" name="approveAmount" placeholder="Token Amount" oninput="this.style.color='black'">
                     <br>
-                    <button data-translate="approve_button" onclick="approve()">Approve</button>
+                    <button data-translate="approve_button" onclick="approveTokens()">Approve</button>
                 </div>
                 <div class="dashed-separator"></div>
                 <div>
@@ -270,7 +275,7 @@
                         <input type="text" id="allowanceSpender" name="allowanceSpender" placeholder="Smart Contract Address 0x123456" oninput="this.style.color='black'">
                         <button onclick="showWalletModal('allowanceSpender',[2])">▼</button>
                     </div>
-                    <button data-translate="allowance_button" onclick="getAllowance()">Check Allowance</button>
+                    <button data-translate="allowance_button" onclick="checkAllowance()">Check Allowance</button>
                     <p id="allowanceResult"></p>
                 </div>
                 <hr>
@@ -282,7 +287,7 @@
                     <label for="stakeAmount" data-translate="stake_amount">Amount to Stake:</label>
                     <input type="number" id="stakeAmount" name="stakeAmount" placeholder="Amount to Stake" oninput="this.style.color='black'">
                     <br>
-                    <button data-translate="stake_button" onclick="stake()">Stake Tokens</button>
+                    <button data-translate="stake_button" onclick="stakeTokens()">Stake Tokens</button>
                 </div>
                 <div class="dashed-separator"></div>
                 <div>
@@ -292,7 +297,7 @@
                         <input type="text" id="stakeInfoAddress" name="stakeInfoAddress" placeholder="Wallet Address 0x123456" oninput="this.style.color='black'">
                         <button onclick="showWalletModal('stakeInfoAddress',[1])">▼</button>
                     </div>
-                    <button data-translate="stake_info_button" onclick="getStakeInfo()">Check Staking Info</button>
+                    <button data-translate="stake_info_button" onclick="checkStakeInfo()">Check Staking Info</button>
                     <p id="stakeInfoResult"></p>
                 </div>
                 <div class="dashed-separator"></div>
@@ -303,7 +308,7 @@
                         <input type="text" id="rewardInfoAddress" name="rewardInfoAddress" placeholder="Wallet Address 0x123456" oninput="this.style.color='black'">
                         <button onclick="showWalletModal('rewardInfoAddress',[1])">▼</button>
                     </div>
-                    <button data-translate="reward_info_button" onclick="getRewardInfo()">Check Staking Rewards</button>
+                    <button data-translate="reward_info_button" onclick="checkRewardInfo()">Check Staking Rewards</button>
                     <p id="rewardInfoResult"></p>
                 </div>
                 <div class="dashed-separator"></div>
@@ -312,19 +317,19 @@
                     <label for="withdrawAmount" data-translate="withdraw_amount">Amount to Withdraw:</label>
                     <input type="number" id="withdrawAmount" name="withdrawAmount" placeholder="Amount to Withdraw" oninput="this.style.color='black'">
                     <br>
-                    <button data-translate="withdraw_button" onclick="withdraw()">Withdraw Principal</button>
+                    <button data-translate="withdraw_button" onclick="withdrawTokens()">Withdraw Principal</button>
                 </div>
                 <div class="dashed-separator"></div>
                 <div>
                     <h3 data-translate="claim_rewards_title">Claim Staking Rewards</h3>
-                    <button data-translate="claim_rewards_button" onclick="claimRewards()">Claim Rewards</button>
+                    <button data-translate="claim_rewards_button" onclick="claimStakingRewards()">Claim Rewards</button>
                 </div>
                 <hr>
                 <h2 style="text-align: center;" data-translate="airdrop_contract">Airdrop Contract</h2>
                 <p data-translate="airdrop_intro">The airdrop contract is used to distribute tokens to users for free. The amount of tokens received depends on the time of claiming. The base amount of tokens is 1000 CEC. Users must first register. Claiming within 30 days of registration earns 50% of the base tokens. Claiming between 31 and 90 days earns 100% of the base tokens. Claiming after 90 days earns 200% of the base tokens.</p>
                 <div>
                     <h3 data-translate="register_title">Register for Airdrop</h3>
-                    <button data-translate="register_button" onclick="registerForAirdrop()">Register</button>
+                    <button data-translate="register_button" onclick="registerAirdrop()">Register</button>
                 </div>
                 <div class="dashed-separator"></div>
                 <div>
@@ -334,13 +339,13 @@
                         <input type="text" id="airdropInfoAddress" name="airdropInfoAddress" placeholder="Wallet Address 0x123456" oninput="this.style.color='black'">
                         <button onclick="showWalletModal('airdropInfoAddress',[1])">▼</button>
                     </div>
-                    <button data-translate="airdrop_info_button" onclick="getAirdropInfo()">Check Airdrop Info</button>
+                    <button data-translate="airdrop_info_button" onclick="checkAirdropInfo()">Check Airdrop Info</button>
                     <p id="airdropInfoResult"></p>
                 </div>                
                 <div class="dashed-separator"></div>
                 <div>
                     <h3 data-translate="claim_airdrop_title">Claim Airdrop Rewards</h3>
-                    <button data-translate="claim_airdrop_button" onclick="claimAirdrop()">Claim Airdrop</button>
+                    <button data-translate="claim_airdrop_button" onclick="claimAirdropRewards()">Claim Airdrop</button>
                 </div>
                 <hr>
                 <h2 style="text-align: center;" data-translate="exchange_contract">Game Exchange Contract</h2>
@@ -350,7 +355,7 @@
                     <label for="exchangeItemAmount" data-translate="exchange_item_amount">Token Amount:</label>
                     <input type="number" id="exchangeItemAmount" name="exchangeItemAmount" placeholder="Token Amount" oninput="this.style.color='black'">
                     <br>
-                    <button data-translate="exchange_item_button" onclick="exchangeItemForTokens()">Exchange</button>
+                    <button data-translate="exchange_item_button" onclick="exchangeItem()">Exchange</button>
                 </div>
                 <div class="dashed-separator"></div>
                 <div>
@@ -358,7 +363,7 @@
                     <label for="exchangeTokensAmount" data-translate="exchange_tokens_amount">Token Amount:</label>
                     <input type="number" id="exchangeTokensAmount" name="exchangeTokensAmount" placeholder="Token Amount" oninput="this.style.color='black'">
                     <br>
-                    <button data-translate="exchange_tokens_button" onclick="exchangeTokensForItem()">Exchange</button>
+                    <button data-translate="exchange_tokens_button" onclick="exchangeTokens()">Exchange</button>
                 </div>
             </div>
         </div>
@@ -388,7 +393,6 @@
                 fetch(file.path)
                     .then(response => response.text())
                     .then(data => {
-                        // console.log("data = ",data);
                         document.getElementById(file.id).innerHTML = data;
 
                         const scriptTags = document.querySelectorAll(`#${file.id} script`);
@@ -400,7 +404,6 @@
 
                         filesLoaded++;
                         if (filesLoaded === files.length) {
-                            // 所有文件加载完成后，调用 loadTranslations
                             loadTranslations();
                         }
                     })
@@ -440,388 +443,124 @@
             console.log('MetaMask disconnected', error);
         });
 
-        window.addEventListener('load', async () => {
-            if (window.ethereum) {
-                web3 = new Web3(window.ethereum);
-                try {
-                    // await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    initializeContract();
-                } catch (error) {
-                    console.error("User denied account access");
-                }
-            } else if (window.web3) {
-                web3 = new Web3(window.web3.currentProvider);
-                initializeContract();
-            } else {
-                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-            }
-        });
-
-        async function initializeContract() {
-            const response = await fetch('config/config.json');
-            const config = await response.json();
-
-            tokenOwner = config.tokenOwner;
-
-            tokenAddress = config.tokenAddress;
-            tokenABI = config.tokenABI;
-            stakingContractAddress = config.stakingContractAddress;
-            stakingContractABI = config.stakingContractABI;
-            airdropContractAddress = config.airdropContractAddress;
-            airdropContractABI = config.airdropContractABI;
-            gameExchangeContractAddress = config.gameExchangeContractAddress;
-            gameExchangeContractABI = config.gameExchangeContractABI;
-
-            tokenClaimContractAddress = config.tokenClaimContractAddress
-            tokenClaimContractABI = config.tokenClaimContractABI
-
-            tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
-            stakingContract = new web3.eth.Contract(stakingContractABI, stakingContractAddress);
-            airdropContract = new web3.eth.Contract(airdropContractABI, airdropContractAddress);
-            gameExchangeContract = new web3.eth.Contract(gameExchangeContractABI, gameExchangeContractAddress);
-
-
-            // console.log('tokenClaimContractABI:', tokenClaimContractABI);
-            // console.log('tokenClaimContractAddress:', tokenClaimContractAddress);
-
-            tokenClaimContract = new web3.eth.Contract(tokenClaimContractABI, tokenClaimContractAddress);
-
-            // console.log('tokenContract methods:', tokenContract.methods);
-            // console.log('stakingContract methods:', stakingContract.methods);
-            // console.log('airdropContract methods:', airdropContract.methods);
-            // console.log('gameExchangeContract methods:', gameExchangeContract.methods);
-            // console.log('tokenClaimContract:', tokenClaimContract);
+        // 事件处理函数
+        function switchNetwork() {
+            switchToBSC();
         }
 
-        async function stake() {
-            const amount = document.getElementById('stakeAmount').value;
+        function addToken() {
+            addTestToken();
+        }
+
+        function claimBNB() {
+            const address = document.getElementById('getBNBCoin').value;
+            getBNB(address);
+        }
+
+        function claimCEC() {
+            const address = document.getElementById('getCECCoin').value;
             const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await stakingContract.methods.stake(web3.utils.toWei(amount, 'ether')).send({ from: account });
-                alert('Staked ' + amount + ' CEC successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while staking.');
-            }
+            getCEC(address, account);
         }
 
-        // 查询质押信息函数
-        async function getStakeInfo() {
-            const address = document.getElementById('stakeInfoAddress').value;
-
-            if (!address) {
-                alert('Please enter a valid wallet address');
-                return;
-            }
-
-            try {
-                const stakedBalance = await stakingContract.methods.stakedBalance(address).call();
-                const stakedAmount = web3.utils.fromWei(stakedBalance[0], 'ether');
-                const lockEndTime = new Date(stakedBalance[1] * 1000).toLocaleString();
-
-                document.getElementById('stakeInfoResult').innerText = `Staked Amount: ${stakedAmount} CEC, Lock End Time: ${lockEndTime}`;
-            } catch (error) {
-                console.error('Failed to fetch stake info:', error);
-                alert('Error while fetching staking info');
-            }
-        }
-
-        // 查询质押奖励函数
-        async function getRewardInfo() {
-            const address = document.getElementById('rewardInfoAddress').value;
-
-            if (!address) {
-                alert('Please enter a valid wallet address');
-                return;
-            }
-
-            try {
-                const rewardBalance = await stakingContract.methods.rewardBalance(address).call();
-                const rewardAmount = web3.utils.fromWei(rewardBalance, 'ether');
-
-                document.getElementById('rewardInfoResult').innerText = `Reward Amount: ${rewardAmount} CEC`;
-            } catch (error) {
-                console.error('Failed to fetch reward info:', error);
-                alert('Error while fetching reward info');
-            }
-        }
-
-        async function withdraw() {
-            const amount = document.getElementById('withdrawAmount').value;
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await stakingContract.methods.withdraw(web3.utils.toWei(amount, 'ether')).send({ from: account });
-                alert('Withdrawn ' + amount + ' CEC successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while withdrawing.');
-            }
-        }
-
-        async function claimRewards() {
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await stakingContract.methods.getReward().send({ from: account });
-                alert('Rewards claimed successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while claiming rewards.');
-            }
-        }
-
-        // 查询空投信息函数
-        async function getAirdropInfo() {
-            const address = document.getElementById('airdropInfoAddress').value;
-
-            if (!address) {
-                alert('Please enter a valid wallet address');
-                return;
-            }
-
-            try {
-                const airdropInfo = await airdropContract.methods.getAirdropInfo(address).call();
-                const isRegistered = airdropInfo[0];
-
-                if (!isRegistered) {
-                    document.getElementById('airdropInfoResult').innerText = 'This address is not registered.';
-                    return;
-                }
-
-                const registrationTime = new Date(airdropInfo[1] * 1000).toLocaleString();
-                const claimableAmount = web3.utils.fromWei(airdropInfo[2], 'ether');
-                const deadlines = airdropInfo[3];
-                const amounts = airdropInfo[4];
-
-                const firstStageDeadline = new Date(deadlines[0] * 1000).toLocaleString();
-                const secondStageDeadline = new Date(deadlines[1] * 1000).toLocaleString();
-                const thirdStageDeadline = new Date(deadlines[2] * 1000).toLocaleString();
-                const firstStageAmount = web3.utils.fromWei(amounts[0], 'ether');
-                const secondStageAmount = web3.utils.fromWei(amounts[1], 'ether');
-                const thirdStageAmount = web3.utils.fromWei(amounts[2], 'ether');
-
-                document.getElementById('airdropInfoResult').innerText = `Registration Time: ${registrationTime}, Claimable Amount: ${claimableAmount} CEC\nFirst Stage Reward: ${firstStageAmount} CEC (Within 30 days, Deadline: ${firstStageDeadline})\nSecond Stage Reward: ${secondStageAmount} CEC (31-90 days, Deadline: ${secondStageDeadline})\nThird Stage Reward: ${thirdStageAmount} CEC (After 90 days, Deadline: ${thirdStageDeadline})`;
-            } catch (error) {
-                console.error('Failed to fetch airdrop info:', error);
-                alert('Error while fetching airdrop info');
-            }
-        }
-
-        async function registerForAirdrop() {
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await airdropContract.methods.register().send({ from: account });
-                alert('Registered for airdrop successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while registering for airdrop.');
-            }
-        }
-
-        async function claimAirdrop() {
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await airdropContract.methods.claimAirdrop().send({ from: account });
-                alert('Airdrop claimed successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while claiming airdrop.');
-            }
-        }
-
-        async function exchangeItemForTokens() {
-            const amount = document.getElementById('exchangeItemAmount').value;
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await gameExchangeContract.methods.exchangeItemForTokens(web3.utils.toWei(amount, 'ether')).send({ from: account });
-                alert('Exchanged item for ' + amount + ' CEC successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while exchanging item for tokens.');
-            }
-        }
-
-        async function exchangeTokensForItem() {
-            const amount = document.getElementById('exchangeTokensAmount').value;
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await gameExchangeContract.methods.exchangeTokensForItem(web3.utils.toWei(amount, 'ether')).send({ from: account });
-                alert('Exchanged ' + amount + ' CEC for item successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while exchanging tokens for item.');
-            }
-        }
-
-        async function getBNB() {
-            const url = 'https://testnet.binance.org/faucet-smart/api';
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                // 添加其他需要的头信息
-                    },
-                    body: JSON.stringify({
-                // 添加请求体，根据API文档的要求填写
-                    }),
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                console.log('Success:', data);
-            } catch (error) {
-                console.error('Failed to fetch BNB:', error);
-            }
-        }
-
-        async function getCEC() {
-            const recipient = document.getElementById('getCECCoin').value;
-
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await tokenClaimContract.methods.claimTokens(recipient).send({ from: account });
-                alert('claimTokens to ' + recipient + ' from account ' + account + ' successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while transferring tokens.');
-            }
-
-        }
-
-
-        async function transfer() {
+        function transferTokens() {
             const to = document.getElementById('transferTo').value;
             const amount = document.getElementById('transferAmount').value;
-
             const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await tokenContract.methods.transfer(to, web3.utils.toWei(amount, 'ether')).send({ from: account });
-                alert('Transferred ' + amount + ' tokens to ' + to + ' successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while transferring tokens.');
-            }
+            transfer(to, amount, account);
         }
 
-        async function approve() {
+        function approveTokens() {
             const spender = document.getElementById('approveSpender').value;
             const amount = document.getElementById('approveAmount').value;
-
             const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await tokenContract.methods.approve(spender, web3.utils.toWei(amount, 'ether')).send({ from: account });
-                alert('Approved ' + amount + ' tokens for ' + spender + ' successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while approving tokens.');
-            }
+            approve(spender, amount, account);
         }
 
-        async function transferFrom() {
+        function transferFrom() {
             const from = document.getElementById('transferFromSender').value;
             const to = document.getElementById('transferFromRecipient').value;
             const amount = document.getElementById('transferFromAmount').value;
-
             const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
-
-            try {
-                await tokenContract.methods.transferFrom(from, to, web3.utils.toWei(amount, 'ether')).send({ from: account });
-                alert('Transferred ' + amount + ' tokens from ' + from + ' to ' + to + ' successfully');
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred while transferring tokens.');
-            }
+            transferFrom(from, to, amount, account);
         }
 
-        // 查询授权数量函数
-        async function getAllowance() {
+        function checkAllowance() {
             const owner = document.getElementById('allowanceOwner').value;
             const spender = document.getElementById('allowanceSpender').value;
-
-            if (!owner || !spender) {
-                alert('Please enter valid addresses');
-                return;
-            }
-
-            try {
-                const allowance = await tokenContract.methods.allowance(owner, spender).call();
-                const allowanceAmount = web3.utils.fromWei(allowance, 'ether');
-
-                document.getElementById('allowanceResult').innerText = `Allowance: ${allowanceAmount} CEC`;
-            } catch (error) {
-                console.error('Failed to fetch allowance:', error);
-                alert('Error while fetching allowance');
-            }
+            getAllowance(owner, spender).then(result => {
+                document.getElementById('allowanceResult').innerText = result;
+            });
         }
 
-        
+        function stakeTokens() {
+            const amount = document.getElementById('stakeAmount').value;
+            const account = localStorage.getItem('selectedAccount');
+            stake(amount, account);
+        }
+
+        function checkStakeInfo() {
+            const address = document.getElementById('stakeInfoAddress').value;
+            getStakeInfo(address).then(result => {
+                document.getElementById('stakeInfoResult').innerText = result;
+            });
+        }
+
+        function checkRewardInfo() {
+            const address = document.getElementById('rewardInfoAddress').value;
+            getRewardInfo(address).then(result => {
+                document.getElementById('rewardInfoResult').innerText = result;
+            });
+        }
+
+        function withdrawTokens() {
+            const amount = document.getElementById('withdrawAmount').value;
+            const account = localStorage.getItem('selectedAccount');
+            withdraw(amount, account);
+        }
+
+        function claimStakingRewards() {
+            const account = localStorage.getItem('selectedAccount');
+            claimRewards(account);
+        }
+
+        function registerAirdrop() {
+            const account = localStorage.getItem('selectedAccount');
+            registerForAirdrop(account);
+        }
+
+        function checkAirdropInfo() {
+            const address = document.getElementById('airdropInfoAddress').value;
+            getAirdropInfo(address).then(result => {
+                document.getElementById('airdropInfoResult').innerText = result;
+            });
+        }
+
+        function claimAirdropRewards() {
+            const account = localStorage.getItem('selectedAccount');
+            claimAirdrop(account);
+        }
+
+        function exchangeItem() {
+            const amount = document.getElementById('exchangeItemAmount').value;
+            const account = localStorage.getItem('selectedAccount');
+            exchangeItemForTokens(amount, account);
+        }
+
+        function exchangeTokens() {
+            const amount = document.getElementById('exchangeTokensAmount').value;
+            const account = localStorage.getItem('selectedAccount');
+            exchangeTokensForItem(amount, account);
+        }
+
         //钱包&智能合约地址 1钱包地址 2智能合约地址 3代币合约 4代币拥有者地址
-        function showWalletModal(inputId, addressTypes) {
+        async function showWalletModal(inputId, addressTypes) {
             const account = localStorage.getItem('selectedAccount');
             if (!account) {
                 connectWallet();
                 return;
             }
-            
-            //选择钱包地址
+
             var selectedInputId = inputId;
             var walletModal = document.getElementById('walletModal');
             walletModal.style.display = 'block';
@@ -832,7 +571,7 @@
             var allAddresses = [];
 
             if (addressTypes.includes(4)) {
-                tokenAddresses.push({ address: tokenOwner, label: 'tokenOwner_address' });
+                tokenAddresses.push({ address: getContractVariable('tokenOwner'), label: 'tokenOwner_address' });
                 allAddresses = allAddresses.concat(tokenAddresses);
             }
 
@@ -845,16 +584,16 @@
                     allAddresses = allAddresses.concat(walletAddresses);
                 }
             }
-            
+
             if (addressTypes.includes(2)) {
-                contractAddresses.push({ address: stakingContractAddress, label: 'staking_contract' });
-                contractAddresses.push({ address: airdropContractAddress, label: 'airdrop_contract' });
-                contractAddresses.push({ address: gameExchangeContractAddress, label: 'exchange_contract' });
-                contractAddresses.push({ address: tokenClaimContractAddress, label: 'tokenClaim_contract' });
+                contractAddresses.push({ address: getContractVariable('stakingContractAddress'), label: 'staking_contract' });
+                contractAddresses.push({ address: getContractVariable('airdropContractAddress'), label: 'airdrop_contract' });
+                contractAddresses.push({ address: getContractVariable('gameExchangeContractAddress'), label: 'exchange_contract' });
+                contractAddresses.push({ address: getContractVariable('tokenClaimContractAddress'), label: 'tokenClaim_contract' });
 
                 allAddresses = allAddresses.concat(contractAddresses);
             }
-            
+
             if (addressTypes.includes(3)) {
                 tokenAddresses.push({ address: tokenAddress, label: 'token_contract' });
                 allAddresses = allAddresses.concat(tokenAddresses);
@@ -863,12 +602,15 @@
             var walletAddressesDiv = document.getElementById('walletAddresses');
             walletAddressesDiv.innerHTML = '';
 
+            // 获取翻译
+            let translations = await fetchTranslations();
+
             allAddresses.forEach(item => {
                 var addressElement = document.createElement('p');
-                
+
                 var labelSpan = document.createElement('span');
                 labelSpan.setAttribute('data-translate', item.label);
-                labelSpan.textContent = item.label;
+                labelSpan.textContent = translations[item.label] || item.label;
 
                 var addressSpan = document.createElement('span');
                 addressSpan.textContent = `: ${item.address}`;
@@ -886,8 +628,6 @@
 
                 walletAddressesDiv.appendChild(addressElement);
             });
-            // 调用翻译功能
-            loadTranslations();
         }
 
 
@@ -904,5 +644,4 @@
         }
     </script>
 </body>
-
 </html>

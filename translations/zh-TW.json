@@ -133,5 +133,8 @@
     "tokenClaim_contract": "代幣領取合約",
     "token_contract": "代幣合約",
     "wallet_address": "錢包地址",
-    "tokenOwner_address": "錢包擁有者地址"
+    "tokenOwner_address": "錢包擁有者地址",
+    "switch_network_button": "切換到BSC測試網",
+    "add_token_button": "添加測試代幣",
+    "bnb_testnet_info": "請在小狐狸錢包優先添加BNB測試網絡，以及添加測試代幣"
 }

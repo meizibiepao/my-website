@@ -133,5 +133,9 @@
     "tokenClaim_contract": "tokenClaim_contract",
     "token_contract": "token_contract",
     "wallet_address": "wallet_address",
-    "tokenOwner_address": "tokenOwner_address"
+    "tokenOwner_address": "tokenOwner_address",
+    "switch_network_button": "Switch to BSC Testnet",
+    "add_token_button": "Add Test Token",
+    "bnb_testnet_info": "Please first add the BNB Testnet and the test token in MetaMask."
+
 }

@@ -19,22 +19,21 @@
     <script src="js/slick.js"></script>
     <script src="js/script.js"></script>
     <script src="js/language.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script> -->
-    <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+    <script src="js/web3functions.js"></script> <!-- 引入web3functions.js文件 -->
 
     <style>
         .title-icon-bar{ 
             position: absolute;
             left: 0;
-            top: 92px; /* Aligns directly below the header */
+            top: 92px; 
             right: 0;
-            height: 150px; /* Example height */
-            z-index: 9; /* Lower than the header */
+            height: 150px; 
+            z-index: 9; 
 
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px; /* Example padding */
+            padding: 0 20px; 
          }
         .title-icon {
             display: flex;
@@ -63,7 +62,7 @@
         }
 
         .container::-webkit-scrollbar {
-            width: 62px; /* 设置滚动条的宽度 */
+            width: 62px; 
         }
 
         .container::-webkit-scrollbar-thumb {
@@ -85,7 +84,7 @@
             bottom: 0px;
             right: 0;
             height: 100px;
-            z-index: 9; /* Lower than the header */
+            z-index: 9; 
 
             display: flex;
             justify-content: space-around;
@@ -143,7 +142,6 @@
             text-decoration: none;
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -272,9 +270,6 @@
     </div>
 </body>
 
-
-
-
 <script>
     var imgDiv = document.getElementById('bgDiv');
     imgDiv.style.backgroundImage = "url('./images/meb-2j-bg.jpg')";
@@ -291,7 +286,6 @@
             fetch(file.path)
                 .then(response => response.text())
                 .then(data => {
-                    // console.log("data = ",data);
                     document.getElementById(file.id).innerHTML = data;
 
                     const scriptTags = document.querySelectorAll(`#${file.id} script`);
@@ -303,7 +297,6 @@
 
                     filesLoaded++;
                     if (filesLoaded === files.length) {
-                        // 所有文件加载完成后，调用 loadTranslations
                         loadTranslations();
                     }
                 })
@@ -315,13 +308,12 @@
         loadTranslations();
     });
 
-    //质押界面
-     function openStakeModal() {
+    function openStakeModal() {
         const account = localStorage.getItem('walletAccount');
         if (account) {
             document.getElementById('stakeModal').style.display = 'block';
-        }else{
-            connectWallet()
+        } else {
+            connectWallet();
         }
     }
 
@@ -329,74 +321,22 @@
         document.getElementById('stakeModal').style.display = 'none';
     }
 
-    //调用智能合约的Stake函数
     async function confirmStake() {
         const amount = document.getElementById('stakeAmount').value;
-
-        if (amount <= 0) {
-            alert('Amount must be greater than 0');
-            return;
-        }
-
-
-        const accounts = await web3.eth.getAccounts();
-        const account = accounts[0];
-        // const account = localStorage.getItem('walletAccount');
-
-        console.log("amount = ",amount);
-        console.log("account = ",account);
-        console.log("contract = ",contract);
-
-        try {
-
-            const allowance = await tokenContract.methods.allowance(account, contractAddress).call();
-            console.log("allowance = ", allowance);
-
-            const weiAmount = web3.utils.toWei(amount, 'ether');
-            console.log("weiAmount = ", weiAmount);
-            if (parseInt(allowance) < parseInt(weiAmount)) {
-                // Approve the required amount
-                await tokenContract.methods.approve(contractAddress, weiAmount).send({ from: account });
-                alert('Approval successful. You can now stake.');
-            }
-
-            contract.methods.stake(web3.utils.toWei(amount, 'ether')).send({ from: account });
-            alert('Staked ' + amount + ' CEC successfully');
-            closeStakeModal();
-        } catch (error) {
-            console.error(error);
-            alert('An error occurred while staking.');
-        }
-
+        const account = localStorage.getItem('walletAccount');
+        await stake(amount, account);
         closeStakeModal();
     }
 
-    //领取本金界面
     async function openWithdrawModal() {
         const account = localStorage.getItem('walletAccount');
         if (account) {
             try {
-                const result = await contract.methods.stakedBalance(account).call();
-                const balanceAmount = web3.utils.fromWei(result[0], 'ether');
-                const lockEndTimeTimestamp = result[1];
-
-                console.log("balanceAmount = ", balanceAmount);
+                const result = await getStakeInfo(account);
+                const [balanceAmount, lockEndTimeString] = result.split(',');
                 document.getElementById('stakedBalanceAmount').textContent = balanceAmount;
                 document.getElementById('withdrawAmount').value = balanceAmount;
-
-                if (parseFloat(balanceAmount) > 0) {
-                    const lockEndTime = new Date(lockEndTimeTimestamp * 1000);
-                    const lockEndTimeString = lockEndTime.getFullYear() + '-' +
-                                              ('0' + (lockEndTime.getMonth() + 1)).slice(-2) + '-' +
-                                              ('0' + lockEndTime.getDate()).slice(-2) + ' ' +
-                                              ('0' + lockEndTime.getHours()).slice(-2) + ':' +
-                                              ('0' + lockEndTime.getMinutes()).slice(-2);
-                    document.getElementById('lockEndTime').textContent = lockEndTimeString;
-                    document.getElementById('lockEndTimeContainer').style.display = 'block';
-                } else {
-                    document.getElementById('lockEndTimeContainer').style.display = 'none';
-                }
-
+                document.getElementById('lockEndTime').textContent = lockEndTimeString;
                 document.getElementById('withdrawModal').style.display = 'block';
             } catch (error) {
                 console.error('Error fetching staked balance:', error);
@@ -410,53 +350,20 @@
     function closeWithdrawModal() {
         document.getElementById('withdrawModal').style.display = 'none';
     }
-    //调用质押合约的withdraw函数
+
     async function confirmWithdraw() {
         const amount = document.getElementById('withdrawAmount').value;
-
-        if (amount <= 0) {
-            alert('Amount must be greater than 0');
-            return;
-        }
-
-        const accounts = await web3.eth.getAccounts();
-        const account = accounts[0];
-        const result = await contract.methods.stakedBalance(account).call();
-        const lockEndTimeTimestamp = result[1];
-
-        const currentTime = Math.floor(Date.now() / 1000);
-        if (currentTime < lockEndTimeTimestamp) {
-            alert('Wait until the end of staking period to withdraw the principal');
-            return;
-        }
-
-        console.log("amount =", amount);
-        console.log("account =", account);
-        console.log("contract =", contract);
-
-        try {
-            const weiAmount = web3.utils.toWei(amount, 'ether');
-            await contract.methods.withdraw(weiAmount).send({ from: account });
-            alert('Withdrawn ' + amount + ' CEC successfully');
-            closeWithdrawModal();
-        } catch (error) {
-            console.error(error);
-            alert('An error occurred while withdrawing.');
-        }
-
+        const account = localStorage.getItem('walletAccount');
+        await withdraw(amount, account);
         closeWithdrawModal();
     }
-    //领取质押奖励界面
+
     async function openClaimRewardsModal() {
         const account = localStorage.getItem('walletAccount');
         if (account) {
             try {
-                const rewardAmount = await contract.methods.rewardBalance(account).call();
-                const rewardAmountInEther = web3.utils.fromWei(rewardAmount, 'ether');
-                const rewardAmountFormatted = parseFloat(rewardAmountInEther).toFixed(2);
-
-                document.getElementById('rewardAmount').textContent = rewardAmountFormatted;
-
+                const rewardAmount = await getRewardInfo(account);
+                document.getElementById('rewardAmount').textContent = rewardAmount;
                 document.getElementById('claimRewardsModal').style.display = 'block';
             } catch (error) {
                 console.error('Error fetching reward balance:', error);
@@ -470,27 +377,11 @@
     function closeClaimRewardsModal() {
         document.getElementById('claimRewardsModal').style.display = 'none';
     }
-    //调用智能合约getReward函数
+
     async function confirmClaimRewards() {
-        const accounts = await web3.eth.getAccounts();
-        const account = accounts[0];
-
-        try {
-            const rewardAmount = await contract.methods.rewardBalance(account).call();
-            const rewardAmountInEther = web3.utils.fromWei(rewardAmount, 'ether');
-
-            if (parseFloat(rewardAmountInEther) < 0.01) {
-                alert('The minimum reward amount to claim is 0.01 CEC.');
-                return;
-            }
-
-            await contract.methods.getReward().send({ from: account });
-            alert('Rewards claimed successfully');
-            closeClaimRewardsModal();
-        } catch (error) {
-            console.error(error);
-            alert('An error occurred while claiming rewards.');
-        }
+        const account = localStorage.getItem('walletAccount');
+        await claimRewards(account);
+        closeClaimRewardsModal();
     }
 
     window.onclick = function(event) {
@@ -512,42 +403,6 @@
     window.ethereum.on('disconnect', (error) => {
         console.log('MetaMask disconnected', error);
     });
-
-    window.addEventListener('load', async () => {
-        if (window.ethereum) {
-            // Modern dapp browsers...
-            web3 = new Web3(window.ethereum);
-            try {
-                // 请求账号访问权限
-                await window.ethereum.request({ method: 'eth_requestAccounts' });
-                console.log('MetaMask connected');
-                initializeContract();
-            } catch (error) {
-                console.error("User denied account access");
-            }
-        } else if (window.web3) {
-            // Legacy dapp browsers...
-            web3 = new Web3(window.web3.currentProvider);
-            initializeContract();
-        } else {
-            console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
-        }
-    });
-
-    async function initializeContract() {
-        const response = await fetch('config/config.json');
-        const config = await response.json();
-
-        tokenAddress = config.tokenAddress;
-        tokenABI = config.tokenABI;
-        contractAddress = config.stakingContractAddress;
-        contractABI = config.stakingContractABI;
-
-        contract = new web3.eth.Contract(contractABI, contractAddress);
-        tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
-
-    }
-
 
 </script>
 </html>
