@@ -151,11 +151,11 @@ function handleWalletButtonClick() {
 function connectWalletOptions() {
     const connectWalletDropdown = document.getElementById('ConnectWallet');
     const walletOptions = [
-        { name: 'Metamask', icon: 'images/header/metamask_Icon.png', walletName: 'metamask' },
-        { name: 'Trust Wallet', icon: 'images/header/trustwallet_Icon.png', walletName: 'trustwallet' },
-        { name: 'Coinbase Wallet', icon: 'images/header/coinbase_Icon.png', walletName: 'coinbasewallet' },
-        { name: 'Safe Pal Wallet', icon: 'images/header/safepal_Icon.png', walletName: 'safepalwallet' },
-        { name: 'Binance Web3 Wallet', icon: 'images/header/binance_Icon.png', walletName: 'bnbwallet' }
+        { name: 'Metamask', icon: 'images/header/metamask_icon.png', walletName: 'metamask' },
+        { name: 'Trust Wallet', icon: 'images/header/trustwallet_icon.png', walletName: 'trustwallet' },
+        { name: 'Coinbase Wallet', icon: 'images/header/coinbase_icon.png', walletName: 'coinbasewallet' },
+        { name: 'Safe Pal Wallet', icon: 'images/header/safepal_icon.png', walletName: 'safepalwallet' },
+        { name: 'Binance Web3 Wallet', icon: 'images/header/binance_icon.png', walletName: 'bnbwallet' }
     ];
 
     connectWalletDropdown.innerHTML = '<div class="wallet-options-grid">' + walletOptions.map(option => `
