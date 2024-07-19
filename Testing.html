@@ -18,8 +18,10 @@
     <script src="js/slick.js"></script>
     <script src="js/script.js"></script>
     <script src="js/language.js"></script>
-    <!-- <script src="js/web3functions.js"></script>  -->
-    <script src="js/web3functions.js" defer></script>
+    <!-- <script src="web3/js/contactFunctions.js"></script>  -->
+    <script src="web3/js/walletFunctions.js" ></script>
+    <script src="web3/js/contactFunctions.js" ></script>
+    
 
     <style>
         .title-icon-bar{ 
@@ -444,40 +446,47 @@
         });
 
         // 事件处理函数
-        function switchNetwork() {
+        async function switchNetwork() {
+            await checkInitWeb3AndContract();
             switchToBSC();
         }
 
-        function addToken() {
+        async function addToken() {
+            await checkInitWeb3AndContract();
             addTestToken();
         }
 
-        function claimBNB() {
+        async function claimBNB() {
+            await checkInitWeb3AndContract();
             const address = document.getElementById('getBNBCoin').value;
             getBNB(address);
         }
 
-        function claimCEC() {
+        async function claimCEC() {
+            await checkInitWeb3AndContract();
             const address = document.getElementById('getCECCoin').value;
             const account = localStorage.getItem('selectedAccount');
             getCEC(address, account);
         }
 
-        function transferTokens() {
+        async function transferTokens() {
+            await checkInitWeb3AndContract();
             const to = document.getElementById('transferTo').value;
             const amount = document.getElementById('transferAmount').value;
             const account = localStorage.getItem('selectedAccount');
             transfer(to, amount, account);
         }
 
-        function approveTokens() {
+        async function approveTokens() {
+            await checkInitWeb3AndContract();
             const spender = document.getElementById('approveSpender').value;
             const amount = document.getElementById('approveAmount').value;
             const account = localStorage.getItem('selectedAccount');
             approve(spender, amount, account);
         }
 
-        function transferFrom() {
+        async function transferFrom() {
+            await checkInitWeb3AndContract();
             const from = document.getElementById('transferFromSender').value;
             const to = document.getElementById('transferFromRecipient').value;
             const amount = document.getElementById('transferFromAmount').value;
@@ -485,7 +494,8 @@
             transferFrom(from, to, amount, account);
         }
 
-        function checkAllowance() {
+        async function checkAllowance() {
+            await checkInitWeb3AndContract();
             const owner = document.getElementById('allowanceOwner').value;
             const spender = document.getElementById('allowanceSpender').value;
             getAllowance(owner, spender).then(result => {
@@ -493,61 +503,71 @@
             });
         }
 
-        function stakeTokens() {
+        async function stakeTokens() {
+            await checkInitWeb3AndContract();
             const amount = document.getElementById('stakeAmount').value;
             const account = localStorage.getItem('selectedAccount');
             stake(amount, account);
         }
 
-        function checkStakeInfo() {
+        async function checkStakeInfo() {
+            await checkInitWeb3AndContract();
             const address = document.getElementById('stakeInfoAddress').value;
             getStakeInfo(address).then(result => {
                 document.getElementById('stakeInfoResult').innerText = result;
             });
         }
 
-        function checkRewardInfo() {
+        async function checkRewardInfo() {
+            await checkInitWeb3AndContract();
             const address = document.getElementById('rewardInfoAddress').value;
             getRewardInfo(address).then(result => {
                 document.getElementById('rewardInfoResult').innerText = result;
             });
         }
 
-        function withdrawTokens() {
+        async function withdrawTokens() {
+            await checkInitWeb3AndContract();
             const amount = document.getElementById('withdrawAmount').value;
             const account = localStorage.getItem('selectedAccount');
             withdraw(amount, account);
         }
 
-        function claimStakingRewards() {
+        async function claimStakingRewards() {
+            await checkInitWeb3AndContract();
             const account = localStorage.getItem('selectedAccount');
             claimRewards(account);
         }
 
-        function registerAirdrop() {
+        async function registerAirdrop() {
+            await checkInitWeb3AndContract();
             const account = localStorage.getItem('selectedAccount');
             registerForAirdrop(account);
         }
 
-        function checkAirdropInfo() {
+        async function checkAirdropInfo() {
+            await checkInitWeb3AndContract();
             const address = document.getElementById('airdropInfoAddress').value;
             getAirdropInfo(address).then(result => {
                 document.getElementById('airdropInfoResult').innerText = result;
             });
         }
 
-        function claimAirdropRewards() {
+        async function claimAirdropRewards() {
+            await checkInitWeb3AndContract();
             const account = localStorage.getItem('selectedAccount');
             claimAirdrop(account);
         }
 
-        function exchangeItem() {
+        async function exchangeItem() {
+            await checkInitWeb3AndContract();
             const amount = document.getElementById('exchangeItemAmount').value;
             const account = localStorage.getItem('selectedAccount');
             exchangeItemForTokens(amount, account);
         }
 
-        function exchangeTokens() {
+        async function exchangeTokens() {
+            await checkInitWeb3AndContract();
             const amount = document.getElementById('exchangeTokensAmount').value;
             const account = localStorage.getItem('selectedAccount');
             exchangeTokensForItem(amount, account);
@@ -555,11 +575,11 @@
 
         //钱包&智能合约地址 1钱包地址 2智能合约地址 3代币合约 4代币拥有者地址
         async function showWalletModal(inputId, addressTypes) {
-            const account = localStorage.getItem('selectedAccount');
-            if (!account) {
-                connectWallet();
-                return;
-            }
+            // const account = localStorage.getItem('selectedAccount');
+            // if (!account) {
+            //     connectWallet();
+            //     return;
+            // }
 
             var selectedInputId = inputId;
             var walletModal = document.getElementById('walletModal');
@@ -642,6 +662,35 @@
                 walletModal.style.display = 'none';
             }
         }
+
+        async function checkInitWeb3AndContract() {
+            const initState = checkInitWeb3();
+            // console.log('initState = ',initState);
+            if (!initState) {
+                try {
+                    // console.log('checkInitWeb3AndContract');
+                    await connectWallet();
+                    await initializeContracts();
+                    
+                } catch (error) {
+                    console.error("Error during wallet connection:", error);
+                }
+            }
+        }
+
+        // initializeWeb3();
+        // connectWallet();
+
+
+
+        // document.addEventListener('connectWalletDone', async () => {
+        //     console.log("connectWalletDone - dispatchEvent - get!");
+        //     try {
+        //         initializeContracts();
+        //     } catch (error) {
+        //         console.error("Error during wallet connection:", error);
+        //     }
+        // });
     </script>
 </body>
 </html>

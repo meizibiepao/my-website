@@ -19,7 +19,10 @@
     <script src="js/slick.js"></script>
     <script src="js/script.js"></script>
     <script src="js/language.js"></script>
-    <script src="js/web3functions.js"></script> <!-- 引入web3functions.js文件 -->
+    <!-- <script src="web3/js/contactFunctions.js"></script> 
+    <script src="web3/js/walletFunctions.js"></script>  -->
+    <script src="web3/js/contactFunctions.js" defer></script>
+    <script src="web3/js/walletFunctions.js" defer></script>
 
     <style>
         .title-icon-bar{ 
@@ -307,6 +310,7 @@
     document.addEventListener('languageChange', () => {
         loadTranslations();
     });
+
 
     function openStakeModal() {
         const account = localStorage.getItem('walletAccount');

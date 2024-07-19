@@ -1,3 +1,30 @@
+<style>
+    .wallet-options-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .wallet-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60px; 
+        text-align: center;
+        cursor: pointer;
+        margin: 10px;
+        box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
+    }
+    .wallet-option img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 5px;
+    }
+    .wallet-option span {
+        color: white;
+        font-size: 14px;
+    }
+</style>
+
 <body>    
     <div class="header">
         <div class='title-bar'>
@@ -67,7 +94,7 @@
 
                 <div class="des-btn">
                     <div class="icon-wallet">
-                        <img src='images/header/MetaMask_Icon.png'></div>
+                        <img src='images/header/Wallet_Icon.png'></div>
                     </div>
                     <button class="dropdown-button" id="connectWalletBtn" onclick="handleWalletButtonClick()" onmouseenter="handleWalletButtonMouseEnter()" onmouseleave="hideDropdown('ConnectWallet')" data-translate="connect_wallet">Connect Wallet</button>
                     <div id="ConnectWallet" class="dropdown-content" onmouseenter="showDropdown('ConnectWallet')" onmouseleave="hideDropdown('ConnectWallet')"></div>
@@ -86,30 +113,48 @@
         </div>
     </div>
 
+
+
     <div id="floatingText" class="floating-text"></div>
 
+    <script src="web3/js/walletFunctions.js"></script>
+    <script src="web3/js/contactFunctions.js" ></script>
     <script src="js/script.js"></script>
-
+    
     <script>
-        
-        // console.log("loadTranslations - header 2222");
+        // localStorage.removeItem('walletName');
+        // localStorage.removeItem('walletAccounts');
+        // localStorage.removeItem('selectedAccount');
+        // setLogoutWalletStage();
+
+
         loadTranslations();
         updateWalletButton();
 
-        // // document.addEventListener("DOMContentLoaded", () => {
-        // //     console.log("DOMContentLoaded - header");
-        // //     updateWalletButton();
-        // // });
-        // console.log("header  !!!!!");
+        // function connectWeb3Wallet(walletName) {
+        //     localStorage.setItem('walletName', walletName);
+        //     connectWallet();
+        // }
 
-        // document.addEventListener('languageChange', () => {
-        //     console.log("languageChange - header1111");
-        //     // const language = localStorage.getItem('language');
-        //     loadTranslations();
-        //     updateWalletButton();
-        //     console.log("languageChange - header2222");
+        document.addEventListener('connectWallet', () => {
+            connectWallet();            
+        });
+
+        document.addEventListener('connectWalletDone', () => {
+            updateWalletButton();
+            initializeContracts();
+        });
+
+        // document.addEventListener('connectWallet', async () => {
+        //     console.log("connectWallet - dispatchEvent - get!");
+        //     try {
+        //         // await initializeWeb3();
+        //         // await initializeContracts();
+        //         // await connectWallet();
+        //     } catch (error) {
+        //         console.error("Error during wallet connection:", error);
+        //     }
         // });
-
 
     </script>
 </body>

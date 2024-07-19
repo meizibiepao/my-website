@@ -16,7 +16,7 @@ document.querySelectorAll('.des-btn').forEach(btn => {
         var dropdown = this.querySelector('.dropdown-content');
         if (dropdown) {
             dropdown.style.display = 'block';
-            adjustDropdownPosition(dropdown);
+            adjustDropdownPosition(dropdown , this.id);
         }
     });
 
@@ -29,7 +29,6 @@ document.querySelectorAll('.des-btn').forEach(btn => {
 });
 
 function adjustDropdownPosition(dropdown,dropdownId) {
-
     if (dropdownId == 'ConnectWallet')
     {
         var trigger = document.getElementById('connectWalletBtn');
@@ -68,35 +67,37 @@ function hideDropdown(dropdownId) {
     dropdown.style.display = 'none';
 }
 
-// 连接钱包函数
-async function connectWallet() {
-    if (typeof window.ethereum !== 'undefined') {
-        try {
-            // 请求账户访问权限
-            const accounts = await window.ethereum.request({
-                method: 'eth_requestAccounts',
-                params: [{ eth_accounts: {} }]
-            });
-
-            // 保存账号信息到 LocalStorage
-            localStorage.setItem('walletAccounts', JSON.stringify(accounts));
-            localStorage.setItem('selectedAccount', accounts[0]);
-
-            updateWalletButton();
-            showFloatingText('Wallet account is already logged in');
-        } catch (error) {
-            console.error("User rejected the request or there was an error");
-            alert('Failed to connect wallet. Please ensure MetaMask is unlocked and try again.');
-        }
-    } else {
-        alert('MetaMask is not installed. Please install it to use this feature.');
-    }
-}
-
 function updateWalletButton() {
     const accounts = JSON.parse(localStorage.getItem('walletAccounts'));
     const selectedAccount = localStorage.getItem('selectedAccount');
     const connectWalletBtn = document.getElementById('connectWalletBtn');
+    const walletName = localStorage.getItem('walletName');
+
+    const iconWallet = document.querySelector('.icon-wallet img');
+
+    if (walletName) {
+        switch (walletName) {
+            case 'metamask':
+                iconWallet.src = 'images/header/metamask_Icon.png';
+                break;
+            case 'trustwallet':
+                iconWallet.src = 'images/header/trustwallet_Icon.png';
+                break;
+            case 'bnbwallet':
+                iconWallet.src = 'images/header/binance_Icon.png';
+                break;
+            case 'coinbasewallet':
+                iconWallet.src = 'images/header/coinbase_Icon.png';
+                break;
+            case 'mathwallet':
+                iconWallet.src = 'images/header/mathWallet_Icon.png';
+                break;
+            default:
+                iconWallet.src = 'images/header/Wallet_Icon.png';
+        }
+    } else {
+        iconWallet.src = 'images/header/Wallet_Icon.png';
+    }
 
     if (accounts && selectedAccount && connectWalletBtn) {
         // 保留前6位和后4位，中间用3个点表示
@@ -121,30 +122,62 @@ function switchAccount(account) {
     if (account !== selectedAccount) {
         localStorage.setItem('selectedAccount', account);
         updateWalletButton();
-        location.reload();
+        // location.reload();
     }
 }
 
 function handleWalletButtonMouseEnter() {
     const accounts = JSON.parse(localStorage.getItem('walletAccounts'));
-    if (accounts && accounts.length > 0) {
-        showDropdown('ConnectWallet');
+    if (!accounts || accounts.length === 0) {
+        connectWalletOptions();
+    }else{
+        updateWalletButton();
     }
+    showDropdown('ConnectWallet');
 }
 
 function handleWalletButtonClick() {
     const accounts = JSON.parse(localStorage.getItem('walletAccounts'));
     if (!accounts || accounts.length === 0) {
-        connectWallet();
+        // connectWallet();
+        // document.dispatchEvent(new Event('connectWallet'));
+        const connectWalletDropdown = document.getElementById('ConnectWallet');
+        connectWalletDropdown.style.display = 'block';
     } else {
-        document.getElementById('confirmLogout').style.display = 'flex';
+        // document.getElementById('confirmLogout').style.display = 'flex';
     }
 }
 
+function connectWalletOptions() {
+    const connectWalletDropdown = document.getElementById('ConnectWallet');
+    const walletOptions = [
+        { name: 'Metamask', icon: 'images/header/metamask_Icon.png', walletName: 'metamask' },
+        { name: 'Trust Wallet', icon: 'images/header/trustwallet_Icon.png', walletName: 'trustwallet' },
+        { name: 'Coinbase Wallet', icon: 'images/header/coinbase_Icon.png', walletName: 'coinbasewallet' },
+        { name: 'Safe Pal Wallet', icon: 'images/header/safepal_Icon.png', walletName: 'safepalwallet' },
+        { name: 'Binance Web3 Wallet', icon: 'images/header/binance_Icon.png', walletName: 'bnbwallet' }
+    ];
+
+    connectWalletDropdown.innerHTML = '<div class="wallet-options-grid">' + walletOptions.map(option => `
+        <div class="wallet-option" onclick="connectWeb3Wallet('${option.walletName}')">
+            <img src="${option.icon}" alt="${option.name}">
+            <span>${option.name}</span>
+        </div>
+    `).join('') + '</div>';
+}
+
+function connectWeb3Wallet(walletName) {
+    localStorage.setItem('walletName', walletName);
+    // console.log("connectWeb3Wallet - walletName = ",walletName);
+    document.dispatchEvent(new Event('connectWallet'));
+}
+
 function logout() {
+    localStorage.removeItem('walletName');
     localStorage.removeItem('walletAccounts');
     localStorage.removeItem('selectedAccount');
     updateWalletButton(); // 更新按钮状态
+    setLogoutWalletStage();
     location.reload();
 }
 
