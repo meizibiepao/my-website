@@ -78,25 +78,25 @@ function updateWalletButton() {
     if (walletName) {
         switch (walletName) {
             case 'metamask':
-                iconWallet.src = 'images/header/metamask_Icon.png';
+                iconWallet.src = 'images/header/metamask_icon.png';
                 break;
             case 'trustwallet':
-                iconWallet.src = 'images/header/trustwallet_Icon.png';
+                iconWallet.src = 'images/header/trustwallet_icon.png';
                 break;
             case 'bnbwallet':
-                iconWallet.src = 'images/header/binance_Icon.png';
+                iconWallet.src = 'images/header/binance_icon.png';
                 break;
             case 'coinbasewallet':
-                iconWallet.src = 'images/header/coinbase_Icon.png';
+                iconWallet.src = 'images/header/coinbase_icon.png';
                 break;
             case 'mathwallet':
-                iconWallet.src = 'images/header/mathWallet_Icon.png';
+                iconWallet.src = 'images/header/mathwallet_icon.png';
                 break;
             default:
-                iconWallet.src = 'images/header/Wallet_Icon.png';
+                iconWallet.src = 'images/header/wallet_icon.png';
         }
     } else {
-        iconWallet.src = 'images/header/Wallet_Icon.png';
+        iconWallet.src = 'images/header/wallet_icon.png';
     }
 
     if (accounts && selectedAccount && connectWalletBtn) {
