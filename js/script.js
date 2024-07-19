@@ -89,8 +89,8 @@ function updateWalletButton() {
             case 'coinbasewallet':
                 iconWallet.src = 'images/header/coinbase_icon.png';
                 break;
-            case 'mathwallet':
-                iconWallet.src = 'images/header/mathwallet_icon.png';
+            case 'safepalwallet':
+                iconWallet.src = 'images/header/safepal_icon.png';
                 break;
             default:
                 iconWallet.src = 'images/header/wallet_icon.png';
