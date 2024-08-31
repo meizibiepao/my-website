@@ -1,0 +1,7 @@
+{
+  "url": "https://meizibiepao.github.io/my-website/index.html",           // 应用程序的根 URL，必填
+  "name": "Idle Gog",                     // 应用程序的名称，必填
+  "iconUrl": "https://meizibiepao.github.io/my-website/images/tokenIcon/CatEarCoin-256x256.png", // 应用程序的图标 URL，必填
+  "termsOfUseUrl": "",  // 用户条款 URL，可选
+  "privacyPolicyUrl": "" // 隐私政策 URL，可选
+}
